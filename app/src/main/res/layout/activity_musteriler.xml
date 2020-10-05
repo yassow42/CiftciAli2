@@ -1,0 +1,560 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MusterilerActivity">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tvMusteri"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Müşteriler"
+            android:textColor="@color/beyaz"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imgMusteriEkle"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_plus" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
+        android:id="@+id/bottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
+
+    <AutoCompleteTextView
+        android:id="@+id/searchMs"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+
+        android:background="@drawable/bg_edittext2"
+        android:hint="Müşteri Adı"
+        android:paddingLeft="8dp"
+        android:paddingTop="6dp"
+        android:paddingBottom="6dp"
+        android:textColor="@color/beyaz"
+
+
+        android:textColorHint="@color/beyaz"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toStartOf="@+id/imgMusteriAra"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
+
+    <ImageView
+        android:id="@+id/imgMusteriAra"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/right"
+        app:layout_constraintBottom_toBottomOf="@+id/searchMs"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/searchMs"
+        app:srcCompat="@drawable/right" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNav"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchMs">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/searchMs">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clPazartesi"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/bg_gunler">
+
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pazartesi"
+                    android:textColor="@color/beyaz"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"></TextView>
+
+                <ImageView
+                    android:id="@+id/imgPazartesiDown"
+                    android:layout_width="27dp"
+                    android:layout_height="27dp"
+                    android:layout_marginEnd="24dp"
+                    android:background="@drawable/down"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/imgPazartesiUp"
+                    android:layout_width="27dp"
+                    android:layout_height="27dp"
+                    android:layout_marginEnd="24dp"
+                    android:background="@drawable/up"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@+id/imgPazartesiDown"
+                    app:layout_constraintEnd_toStartOf="@+id/imgPazartesiDown"
+                    app:layout_constraintTop_toTopOf="@+id/imgPazartesiDown"
+                    app:srcCompat="@drawable/up" />
+
+                <TextView
+                    android:id="@+id/tvPazartesiSayi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:text="0"
+                    android:textColor="@color/beyaz"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.simplecityapps.recyclerview_fastscroll.views.FastScrollRecyclerView
+
+                android:id="@+id/rcPazartesiMusteri"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="300dp"
+                android:visibility="gone"
+                app:fastScrollEnableThumbInactiveColor="true"
+                app:fastScrollPopupBackgroundSize="15sp"
+                app:fastScrollPopupBgColor="@color/beyaz"
+                app:fastScrollPopupPosition="center"
+                app:fastScrollPopupTextColor="@color/siyah"
+                app:fastScrollPopupTextSize="15sp"
+                app:fastScrollThumbColor="@color/beyaz"
+                app:fastScrollThumbEnabled="true"
+                app:fastScrollThumbInactiveColor="@color/beyaz"
+                app:fastScrollTrackColor="@color/colorPrimary" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clSali"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/bg_gunler">
+
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Salı"
+                    android:textColor="@color/beyaz"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"></TextView>
+
+                <ImageView
+                    android:id="@+id/imgSaliDown"
+                    android:layout_width="27dp"
+                    android:layout_height="27dp"
+                    android:layout_marginEnd="24dp"
+                    android:background="@drawable/down"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/imgSaliUp"
+                    android:layout_width="27dp"
+                    android:layout_height="27dp"
+                    android:layout_marginEnd="24dp"
+                    android:background="@drawable/up"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/imgSaliDown"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/up" />
+
+                <TextView
+                    android:id="@+id/tvSaliSayi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:text="0"
+                    android:textColor="@color/beyaz"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.simplecityapps.recyclerview_fastscroll.views.FastScrollRecyclerView
+
+                android:id="@+id/rcSaliMusteri"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="300dp"
+                android:visibility="gone"
+                app:fastScrollEnableThumbInactiveColor="true"
+                app:fastScrollPopupBackgroundSize="15sp"
+                app:fastScrollPopupBgColor="@color/beyaz"
+                app:fastScrollPopupPosition="center"
+                app:fastScrollPopupTextColor="@color/siyah"
+                app:fastScrollPopupTextSize="15sp"
+
+                app:fastScrollThumbColor="@color/beyaz"
+                app:fastScrollThumbEnabled="true"
+                app:fastScrollThumbInactiveColor="@color/beyaz"
+                app:fastScrollTrackColor="@color/colorPrimary" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clCarsamba"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/bg_gunler">
+
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Çarşamba"
+                    android:textColor="@color/beyaz"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"></TextView>
+
+                <ImageView
+                    android:id="@+id/imgCarsambaDown"
+                    android:layout_width="27dp"
+                    android:layout_height="27dp"
+                    android:layout_marginEnd="24dp"
+                    android:background="@drawable/down"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/imgCarsambaUp"
+                    android:layout_width="27dp"
+                    android:layout_height="27dp"
+                    android:layout_marginEnd="24dp"
+                    android:background="@drawable/up"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/imgCarsambaDown"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/up" />
+
+                <TextView
+                    android:id="@+id/tvCarsambaSayi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:text="0"
+                    android:textColor="@color/beyaz"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.simplecityapps.recyclerview_fastscroll.views.FastScrollRecyclerView
+                android:id="@+id/rcCarsambaMusteri"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="300dp"
+                android:visibility="gone"
+                app:fastScrollEnableThumbInactiveColor="true"
+                app:fastScrollPopupBackgroundSize="15sp"
+                app:fastScrollPopupBgColor="@color/beyaz"
+                app:fastScrollPopupPosition="center"
+                app:fastScrollPopupTextColor="@color/siyah"
+                app:fastScrollPopupTextSize="15sp"
+
+                app:fastScrollThumbColor="@color/beyaz"
+                app:fastScrollThumbEnabled="true"
+                app:fastScrollThumbInactiveColor="@color/beyaz"
+                app:fastScrollTrackColor="@color/colorPrimary" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clPers"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/bg_gunler">
+
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Perşembe"
+                    android:textColor="@color/beyaz"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"></TextView>
+
+                <ImageView
+                    android:id="@+id/imgPersDown"
+                    android:layout_width="27dp"
+                    android:layout_height="27dp"
+                    android:layout_marginEnd="24dp"
+                    android:background="@drawable/down"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/imgPersUp"
+                    android:layout_width="27dp"
+                    android:layout_height="27dp"
+                    android:layout_marginEnd="24dp"
+                    android:background="@drawable/up"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/imgPersDown"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/up" />
+
+                <TextView
+                    android:id="@+id/tvPersSayi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:text="0"
+                    android:textColor="@color/beyaz"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.simplecityapps.recyclerview_fastscroll.views.FastScrollRecyclerView
+                android:id="@+id/rcPersMusteri"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="300dp"
+                android:visibility="gone"
+                app:fastScrollEnableThumbInactiveColor="true"
+                app:fastScrollPopupBackgroundSize="15sp"
+                app:fastScrollPopupBgColor="@color/beyaz"
+                app:fastScrollPopupPosition="center"
+                app:fastScrollPopupTextColor="@color/siyah"
+                app:fastScrollPopupTextSize="15sp"
+
+                app:fastScrollThumbColor="@color/beyaz"
+                app:fastScrollThumbEnabled="true"
+                app:fastScrollThumbInactiveColor="@color/beyaz"
+                app:fastScrollTrackColor="@color/colorPrimary" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clCuma"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/bg_gunler">
+
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cuma"
+                    android:textColor="@color/beyaz"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"></TextView>
+
+                <ImageView
+                    android:id="@+id/imgCumaDown"
+                    android:layout_width="27dp"
+                    android:layout_height="27dp"
+                    android:layout_marginEnd="24dp"
+                    android:background="@drawable/down"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/imgCumaUp"
+                    android:layout_width="27dp"
+                    android:layout_height="27dp"
+                    android:layout_marginEnd="24dp"
+                    android:background="@drawable/up"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/imgCumaDown"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/up" />
+
+                <TextView
+                    android:id="@+id/tvCumaSayi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:text="0"
+                    android:textColor="@color/beyaz"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.simplecityapps.recyclerview_fastscroll.views.FastScrollRecyclerView
+                android:id="@+id/rcCumaMusteri"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="300dp"
+                android:visibility="gone"
+                app:fastScrollEnableThumbInactiveColor="true"
+                app:fastScrollPopupBackgroundSize="15sp"
+                app:fastScrollPopupBgColor="@color/beyaz"
+                app:fastScrollPopupPosition="center"
+                app:fastScrollPopupTextColor="@color/siyah"
+                app:fastScrollPopupTextSize="15sp"
+
+                app:fastScrollThumbColor="@color/beyaz"
+                app:fastScrollThumbEnabled="true"
+                app:fastScrollThumbInactiveColor="@color/beyaz"
+                app:fastScrollTrackColor="@color/colorPrimary" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clCumartesi"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/bg_gunler">
+
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cumartesi"
+                    android:textColor="@color/beyaz"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"></TextView>
+
+                <ImageView
+                    android:id="@+id/imgCumartesiDown"
+                    android:layout_width="27dp"
+                    android:layout_height="27dp"
+                    android:layout_marginEnd="24dp"
+                    android:background="@drawable/down"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/imgCumartesiUp"
+                    android:layout_width="27dp"
+                    android:layout_height="27dp"
+                    android:layout_marginEnd="24dp"
+                    android:background="@drawable/up"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/imgCumartesiDown"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/up" />
+
+                <TextView
+                    android:id="@+id/tvCumartesiSayi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:text="0"
+                    android:textColor="@color/beyaz"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.simplecityapps.recyclerview_fastscroll.views.FastScrollRecyclerView
+                android:id="@+id/rcCumartesiMusteri"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="300dp"
+                android:visibility="gone"
+                app:fastScrollEnableThumbInactiveColor="true"
+                app:fastScrollPopupBackgroundSize="15sp"
+                app:fastScrollPopupBgColor="@color/beyaz"
+                app:fastScrollPopupPosition="center"
+                app:fastScrollPopupTextColor="@color/siyah"
+                app:fastScrollPopupTextSize="15sp"
+
+                app:fastScrollThumbColor="@color/beyaz"
+                app:fastScrollThumbEnabled="true"
+                app:fastScrollThumbInactiveColor="@color/beyaz"
+                app:fastScrollTrackColor="@color/colorPrimary" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

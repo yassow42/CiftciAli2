@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "671815747127",
+    "firebase_url": "https://ciftciali-d87fb.firebaseio.com",
+    "project_id": "ciftciali-d87fb",
+    "storage_bucket": "ciftciali-d87fb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:671815747127:android:19219bb1572e463fdc21b2",
+        "android_client_info": {
+          "package_name": "com.example.ciftciali"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "671815747127-7ion642q1vo3pk9qrvmuse4am8jbsok7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ciftciali",
+            "certificate_hash": "6372cef160a02234351bd92270f7241dec120571"
+          }
+        },
+        {
+          "client_id": "671815747127-gd1uhun8kv67sbfujgn1bf27meb0rtap.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvrqpAEZHnq1J_e8kV0d4KOCRwI8wO5T8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "671815747127-gd1uhun8kv67sbfujgn1bf27meb0rtap.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

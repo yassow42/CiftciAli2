@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tumLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    android:background="@drawable/bg_siparisler">
+
+    <TextView
+        android:id="@+id/tvSiparisVeren"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Yasin İNCE"
+        android:textColor="@color/beyaz"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvSiparisAdres"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
+        android:text="Kurtuluş Mahallesi Topuz Siteleri Sokak no 5"
+        android:textColor="@color/beyaz"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvSiparisTel" />
+
+    <TextView
+        android:id="@+id/tvSiparisTel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="05419617054"
+        android:textColor="@color/beyaz"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/tvSiparisVeren"
+        app:layout_constraintStart_toStartOf="@+id/tvSiparisVeren"
+        app:layout_constraintTop_toBottomOf="@+id/tvSiparisVeren" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="wrap_content"
+        android:layout_height="2dp"
+        android:layout_marginTop="4dp"
+        android:background="#000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvSiparisAdres" />
+
+    <TextView
+        android:id="@+id/tvNot"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="6dp"
+        android:maxWidth="200dp"
+        android:maxHeight="200dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="@color/beyaz"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/tvZaman"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view" />
+
+    <TextView
+        android:id="@+id/tvFiyat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/beyaz"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/tvNot"
+        app:layout_constraintEnd_toStartOf="@+id/tvNot"
+        app:layout_constraintTop_toTopOf="@+id/tvNot" />
+
+    <TextView
+        android:id="@+id/tvZaman"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:text="15dk önce"
+        android:textColor="@color/beyaz"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/tvTeslimZamani"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:text="TextView"
+        android:textColor="@color/beyaz"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tvZaman" />
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view">
+
+        <TableRow
+            android:id="@+id/tb400gr"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv3litre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="400 Gr Kaşar "
+                android:textColor="@color/beyaz"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv3lt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="0"
+                android:textColor="@color/beyaz"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tb600gr"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv5litre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="600 Gr Kaşar "
+                android:textColor="@color/beyaz"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv5lt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="0"
+                android:textColor="@color/beyaz"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tbBeyazPeynir"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvBeyazPeynirYazi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Beyaz Peynir"
+                android:textColor="@color/beyaz"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvBeyazPeynir"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="0"
+                android:textColor="@color/beyaz"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tbCokelek"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvCokelekYazi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Süt Çökeleği"
+                android:textColor="@color/beyaz"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCokelek"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="0"
+                android:textColor="@color/beyaz"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </TableRow>
+        <TableRow
+            android:id="@+id/tbDil"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvDilYazi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dil Peyniri: "
+                android:textColor="@color/beyaz"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="0"
+                android:textColor="@color/beyaz"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tbCokertme"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvCokertmeYazi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Çökertme Pey: "
+                android:textColor="@color/beyaz"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCokertme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="0"
+                android:textColor="@color/beyaz"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </TableRow>
+    </TableLayout>
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toStartOf="@+id/tvFiyat"
+        app:layout_constraintStart_toEndOf="@+id/tableLayout"
+        app:layout_constraintTop_toBottomOf="@+id/view">
+
+        <TableRow
+            android:id="@+id/tbYumurta"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvYumurtaYazisi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Yumurta:"
+                android:textColor="@color/beyaz"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvYumurta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="0"
+                android:textColor="@color/beyaz"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tbYogurt"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvYogurtYazisi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Yogurt:"
+                android:textColor="@color/beyaz"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvYogurt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="0"
+                android:textColor="@color/beyaz"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tbCigsut"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible">
+
+            <TextView
+                android:id="@+id/tvCigsutYazi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Çiğ Süt:"
+                android:textColor="@color/beyaz"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCigsut"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="0"
+                android:textColor="@color/beyaz"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tbKangal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvKangalYazi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="K. Sucuk:"
+                android:textColor="@color/beyaz"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvKangal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="0"
+                android:textColor="@color/beyaz"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tbSucuk"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvSucukYazi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sucuk:"
+                android:textColor="@color/beyaz"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvSucuk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="0"
+                android:textColor="@color/beyaz"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tbKavurma"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvKavurmaYazi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kavurma: "
+                android:textColor="@color/beyaz"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvKavurma"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="0"
+                android:textColor="@color/beyaz"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </TableRow>
+
+
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/tvSiparisGiren"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="8dp"
+        android:text="TextView"
+        android:textColor="@color/beyaz"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvSiparisVeren"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/tvSiparisVeren"
+        app:layout_constraintTop_toTopOf="@+id/tvSiparisVeren" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

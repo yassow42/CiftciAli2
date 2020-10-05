@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clPeynir"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="@color/colorPrimary">
+
+                <ImageView
+                    android:id="@+id/peynirAsagi"
+                    android:layout_width="27dp"
+                    android:layout_height="27dp"
+                    android:background="@drawable/asagiok"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textView5"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/peynirYukari"
+
+                    android:layout_width="27dp"
+                    android:layout_height="27dp"
+                    android:background="@drawable/yukariok"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textView5"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Peynirler"
+                    android:textColor="@color/beyaz"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TableLayout
+                android:id="@+id/tablePeynirler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:visibility="visible">
+
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="4dp">
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Çökertme Pey."
+                        android:textColor="@color/siyah"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="-12dp"
+                        tools:layout_editor_absoluteY="97dp" />
+
+                    <EditText
+                        android:id="@+id/etCokertmePeyniri"
+                        android:layout_width="65dp"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/bg_edittext"
+                        android:ems="10"
+                        android:inputType="number"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff"
+                        android:textColorHint="#ffffff" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="4dp">
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Dil Peyniri"
+                        android:textColor="@color/siyah"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="-12dp"
+                        tools:layout_editor_absoluteY="97dp" />
+
+                    <EditText
+                        android:id="@+id/etDilPeyniri"
+                        android:layout_width="65dp"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/bg_edittext"
+                        android:ems="10"
+                        android:inputType="number"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff"
+                        android:textColorHint="#ffffff" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="4dp">
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Beyaz Peynir"
+                        android:textColor="@color/siyah"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="-12dp"
+                        tools:layout_editor_absoluteY="97dp" />
+
+                    <EditText
+                        android:id="@+id/etBeyazPeynir"
+                        android:layout_width="65dp"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="8dp"
+
+                        android:background="@drawable/bg_edittext"
+
+                        android:ems="10"
+                        android:inputType="number"
+                        android:textAlignment="center"
+
+                        android:textColor="#ffffff"
+                        android:textColorHint="#ffffff" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="4dp">
+
+                    <TextView
+                        android:id="@+id/textView7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="400 Gr Kaşar"
+                        android:textColor="@color/siyah"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="-12dp"
+                        tools:layout_editor_absoluteY="97dp" />
+
+                    <EditText
+                        android:id="@+id/et3lt"
+                        android:layout_width="65dp"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="8dp"
+
+                        android:background="@drawable/bg_edittext"
+
+                        android:ems="10"
+                        android:inputType="number"
+                        android:textAlignment="center"
+
+                        android:textColor="#ffffff"
+                        android:textColorHint="#ffffff" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="4dp">
+
+                    <TextView
+                        android:id="@+id/textView8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="600 Gr Kaşar"
+                        android:textColor="@color/siyah"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/et5lt"
+
+                        android:layout_width="65dp"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="8dp"
+
+                        android:background="@drawable/bg_edittext"
+                        android:ems="10"
+                        android:inputType="number"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff"
+                        android:textColorHint="#ffffff" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="4dp">
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Süt Çökeleği"
+                        android:textColor="@color/siyah"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/etSutCokelegi"
+
+                        android:layout_width="65dp"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/bg_edittext"
+                        android:ems="10"
+
+                        android:inputType="number"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff"
+                        android:textColorHint="#ffffff"
+
+                        />
+                </TableRow>
+            </TableLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clDiger"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="2dp"
+                android:background="@color/colorPrimary">
+
+                <ImageView
+                    android:id="@+id/digerAsagi"
+                    android:layout_width="27dp"
+                    android:layout_height="27dp"
+                    android:background="@drawable/asagiok"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textView15"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/digerYukari"
+
+                    android:layout_width="27dp"
+                    android:layout_height="27dp"
+                    android:background="@drawable/yukariok"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textView15"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Diğerleri"
+                    android:textColor="@color/beyaz"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TableLayout
+                android:id="@+id/tableDiger"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:visibility="visible">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="4dp">
+
+                    <TextView
+                        android:id="@+id/textView9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Yumurta"
+                        android:textColor="@color/siyah"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/etYumurta"
+
+                        android:layout_width="65dp"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/bg_edittext"
+                        android:ems="10"
+
+                        android:inputType="number"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff"
+                        android:textColorHint="#ffffff"
+
+                        />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="4dp">
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Yogurt"
+                        android:textColor="@color/siyah"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/etYogurt"
+
+                        android:layout_width="65dp"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/bg_edittext"
+                        android:ems="10"
+
+                        android:inputType="number"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff"
+                        android:textColorHint="#ffffff"
+
+                        />
+                </TableRow>
+
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="4dp">
+
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Çiğ Süt"
+                        android:textColor="@color/siyah"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="-12dp"
+                        tools:layout_editor_absoluteY="97dp" />
+
+                    <EditText
+                        android:id="@+id/etCigsut"
+                        android:layout_width="65dp"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="8dp"
+
+                        android:background="@drawable/bg_edittext"
+
+                        android:ems="10"
+                        android:inputType="number"
+                        android:textAlignment="center"
+
+                        android:textColor="#ffffff"
+                        android:textColorHint="#ffffff" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="4dp">
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Kangal Sucuk"
+                        android:textColor="@color/siyah"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/etKangal"
+
+                        android:layout_width="65dp"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/bg_edittext"
+                        android:ems="10"
+
+                        android:inputType="number"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff"
+                        android:textColorHint="#ffffff"
+
+                        />
+                </TableRow>
+
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="4dp">
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sucuk"
+                        android:textColor="@color/siyah"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/etSucuk"
+
+                        android:layout_width="65dp"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/bg_edittext"
+                        android:ems="10"
+
+                        android:inputType="number"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff"
+                        android:textColorHint="#ffffff"
+
+                        />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="4dp">
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Kavurma"
+                        android:textColor="@color/siyah"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/etKavurma"
+                        android:layout_width="65dp"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/bg_edittext"
+                        android:ems="10"
+                        android:inputType="number"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff"
+                        android:textColorHint="#ffffff"
+
+                        />
+
+
+                </TableRow>
+
+
+            </TableLayout>
+
+            <TextView
+                android:id="@+id/tvZamanEkleDialog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="12:21"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="24dp">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etSiparisNotu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/note"
+                    android:drawablePadding="8dp"
+                    android:ems="10"
+                    android:hint="Sipariş Notu"
+                    android:inputType="none"
+                    android:paddingLeft="17dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="15dp"
+                    android:paddingBottom="10dp"
+                    android:textColor="#000"
+                    android:textColorHint="#fff" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
