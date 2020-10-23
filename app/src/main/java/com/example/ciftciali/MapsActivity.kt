@@ -167,7 +167,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                                         }
                                     } catch (e: Exception) {
                                         Log.e("hata", "maps activity harita adres yukleme hatası")
-                                        ref.child("hatalar/mapsactivity/adreshatasi").setValue(e.message.toString())
+                                        ref.child("Hatalar/mapsactivity/adreshatasi").setValue(e.message.toString())
                                     }
 
 
@@ -214,7 +214,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                                                                         bottomSheetDialog.dismiss()
 
 
-                                                                        var siparisData = SiparisData(
+                                                               /*         var gonderilenData = SiparisData(
                                                                             siparisData.siparis_zamani,
                                                                             siparisData.siparis_teslim_zamani,
                                                                             siparisData.siparis_teslim_tarihi,
@@ -233,6 +233,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                                                                             siparisData.yycokertme_pey,
                                                                             siparisData.yydil_pey,
                                                                             siparisData.yybeyaz_pey,
+                                                                            siparisData.yybeyaz_pey1000,
                                                                             siparisData.yycig_sut,
                                                                             siparisData.yykangal_sucuk,
                                                                             siparisData.sucuk,
@@ -241,12 +242,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                                                                             siparisData.musteri_zlat,
                                                                             siparisData.musteri_zlong,
                                                                             kullaniciAdi
-                                                                        )
+                                                                        )*/
 
                                                                         ref.child("Musteriler").child(siparisData.siparis_veren.toString()).child("siparisleri").child(siparisData.siparis_key.toString())
                                                                             .setValue(siparisData)
                                                                         ref.child("Teslim_siparisler").child(siparisData.siparis_key.toString()).setValue(siparisData).addOnCompleteListener {
-
                                                                       //      startActivity(Intent(this@MapsActivity, SiparislerActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
                                                                             Toast.makeText(this@MapsActivity, "Sipariş Teslim Edildi", Toast.LENGTH_LONG).show()
                                                                             ref.child("Siparisler").child(siparisData.siparis_key.toString()).removeValue()

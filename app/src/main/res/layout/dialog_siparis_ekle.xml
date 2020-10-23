@@ -96,6 +96,18 @@
                         android:textAlignment="center"
                         android:textColor="#ffffff"
                         android:textColorHint="#ffffff" />
+
+                    <EditText
+                        android:id="@+id/etCokertmePeyniriFiyat"
+                        android:layout_width="65dp"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/bg_edittext"
+                        android:ems="10"
+                        android:inputType="number"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff"
+                        android:textColorHint="#ffffff" />
                 </TableRow>
 
                 <TableRow
@@ -125,6 +137,18 @@
                         android:textAlignment="center"
                         android:textColor="#ffffff"
                         android:textColorHint="#ffffff" />
+
+                    <EditText
+                        android:id="@+id/etDilPeyniriFiyat"
+                        android:layout_width="65dp"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/bg_edittext"
+                        android:ems="10"
+                        android:inputType="number"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff"
+                        android:textColorHint="#ffffff" />
                 </TableRow>
 
                 <TableRow
@@ -136,7 +160,7 @@
                         android:id="@+id/textView2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Beyaz Peynir"
+                        android:text="Beyaz Peynir 500"
                         android:textColor="@color/siyah"
                         android:textSize="16sp"
                         android:textStyle="bold"
@@ -145,6 +169,68 @@
 
                     <EditText
                         android:id="@+id/etBeyazPeynir"
+                        android:layout_width="65dp"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="8dp"
+
+                        android:background="@drawable/bg_edittext"
+
+                        android:ems="10"
+                        android:inputType="number"
+                        android:textAlignment="center"
+
+                        android:textColor="#ffffff"
+                        android:textColorHint="#ffffff" />
+
+                    <EditText
+                        android:id="@+id/etBeyazPeynirFiyat"
+                        android:layout_width="65dp"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="8dp"
+
+                        android:background="@drawable/bg_edittext"
+
+                        android:ems="10"
+                        android:inputType="number"
+                        android:textAlignment="center"
+
+                        android:textColor="#ffffff"
+                        android:textColorHint="#ffffff" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="4dp">
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Beyaz Peynir 1000"
+                        android:textColor="@color/siyah"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="-12dp"
+                        tools:layout_editor_absoluteY="97dp" />
+
+                    <EditText
+                        android:id="@+id/etBeyazPeynir1000"
+                        android:layout_width="65dp"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="8dp"
+
+                        android:background="@drawable/bg_edittext"
+
+                        android:ems="10"
+                        android:inputType="number"
+                        android:textAlignment="center"
+
+                        android:textColor="#ffffff"
+                        android:textColorHint="#ffffff" />
+
+                    <EditText
+                        android:id="@+id/etBeyazPeynir1000Fiyat"
                         android:layout_width="65dp"
                         android:layout_height="32dp"
                         android:layout_marginStart="8dp"
@@ -176,7 +262,22 @@
                         tools:layout_editor_absoluteY="97dp" />
 
                     <EditText
-                        android:id="@+id/et3lt"
+                        android:id="@+id/et400Kasar"
+                        android:layout_width="65dp"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="8dp"
+
+                        android:background="@drawable/bg_edittext"
+
+                        android:ems="10"
+                        android:inputType="number"
+                        android:textAlignment="center"
+
+                        android:textColor="#ffffff"
+                        android:textColorHint="#ffffff" />
+
+                    <EditText
+                        android:id="@+id/et400KasarFiyat"
                         android:layout_width="65dp"
                         android:layout_height="32dp"
                         android:layout_marginStart="8dp"
@@ -207,7 +308,21 @@
                         android:textStyle="bold" />
 
                     <EditText
-                        android:id="@+id/et5lt"
+                        android:id="@+id/et600Kasar"
+
+                        android:layout_width="65dp"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="8dp"
+
+                        android:background="@drawable/bg_edittext"
+                        android:ems="10"
+                        android:inputType="number"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff"
+                        android:textColorHint="#ffffff" />
+
+                    <EditText
+                        android:id="@+id/et600KasarFiyat"
 
                         android:layout_width="65dp"
                         android:layout_height="32dp"
@@ -247,9 +362,19 @@
                         android:inputType="number"
                         android:textAlignment="center"
                         android:textColor="#ffffff"
-                        android:textColorHint="#ffffff"
+                        android:textColorHint="#ffffff" />
 
-                        />
+                    <EditText
+                        android:id="@+id/etSutCokelegiFiyat"
+                        android:layout_width="65dp"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/bg_edittext"
+                        android:ems="10"
+                        android:inputType="number"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff"
+                        android:textColorHint="#ffffff" />
                 </TableRow>
             </TableLayout>
 
@@ -333,6 +458,21 @@
                         android:textColorHint="#ffffff"
 
                         />
+                    <EditText
+                        android:id="@+id/etYumurtaFiyat"
+
+                        android:layout_width="65dp"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/bg_edittext"
+                        android:ems="10"
+
+                        android:inputType="number"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff"
+                        android:textColorHint="#ffffff"
+
+                        />
                 </TableRow>
 
                 <TableRow
@@ -351,6 +491,66 @@
 
                     <EditText
                         android:id="@+id/etYogurt"
+
+                        android:layout_width="65dp"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/bg_edittext"
+                        android:ems="10"
+
+                        android:inputType="number"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff"
+                        android:textColorHint="#ffffff"
+
+                        />
+                    <EditText
+                        android:id="@+id/etYogurtFiyat"
+
+                        android:layout_width="65dp"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/bg_edittext"
+                        android:ems="10"
+
+                        android:inputType="number"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff"
+                        android:textColorHint="#ffffff"
+
+                        />
+                </TableRow>
+  <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="4dp">
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Yogurt3"
+                        android:textColor="@color/siyah"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/etYogurt3"
+
+                        android:layout_width="65dp"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/bg_edittext"
+                        android:ems="10"
+
+                        android:inputType="number"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff"
+                        android:textColorHint="#ffffff"
+
+                        />
+                    <EditText
+                        android:id="@+id/etYogurt3Fiyat"
 
                         android:layout_width="65dp"
                         android:layout_height="32dp"
@@ -397,6 +597,65 @@
 
                         android:textColor="#ffffff"
                         android:textColorHint="#ffffff" />
+                    <EditText
+                        android:id="@+id/etCigsutFiyat"
+                        android:layout_width="65dp"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="8dp"
+
+                        android:background="@drawable/bg_edittext"
+
+                        android:ems="10"
+                        android:inputType="number"
+                        android:textAlignment="center"
+
+                        android:textColor="#ffffff"
+                        android:textColorHint="#ffffff" />
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="4dp">
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Kefir"
+                        android:textColor="@color/siyah"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="-12dp"
+                        tools:layout_editor_absoluteY="97dp" />
+
+                    <EditText
+                        android:id="@+id/etKefir"
+                        android:layout_width="65dp"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="8dp"
+
+                        android:background="@drawable/bg_edittext"
+
+                        android:ems="10"
+                        android:inputType="number"
+                        android:textAlignment="center"
+
+                        android:textColor="#ffffff"
+                        android:textColorHint="#ffffff" />
+                    <EditText
+                        android:id="@+id/etKefirFiyat"
+                        android:layout_width="65dp"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="8dp"
+
+                        android:background="@drawable/bg_edittext"
+
+                        android:ems="10"
+                        android:inputType="number"
+                        android:textAlignment="center"
+
+                        android:textColor="#ffffff"
+                        android:textColorHint="#ffffff" />
                 </TableRow>
 
                 <TableRow
@@ -408,13 +667,28 @@
 
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Kangal Sucuk"
+                        android:text="Kangal Sucuk    "
                         android:textColor="@color/siyah"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
                     <EditText
                         android:id="@+id/etKangal"
+
+                        android:layout_width="65dp"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/bg_edittext"
+                        android:ems="10"
+
+                        android:inputType="number"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff"
+                        android:textColorHint="#ffffff"
+
+                        />
+                    <EditText
+                        android:id="@+id/etKangalFiyat"
 
                         android:layout_width="65dp"
                         android:layout_height="32dp"
@@ -460,6 +734,21 @@
                         android:textColorHint="#ffffff"
 
                         />
+                    <EditText
+                        android:id="@+id/etSucukFiyat"
+
+                        android:layout_width="65dp"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/bg_edittext"
+                        android:ems="10"
+
+                        android:inputType="number"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff"
+                        android:textColorHint="#ffffff"
+
+                        />
                 </TableRow>
 
                 <TableRow
@@ -478,6 +767,19 @@
 
                     <EditText
                         android:id="@+id/etKavurma"
+                        android:layout_width="65dp"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/bg_edittext"
+                        android:ems="10"
+                        android:inputType="number"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff"
+                        android:textColorHint="#ffffff"
+
+                        />
+                    <EditText
+                        android:id="@+id/etKavurmaFiyat"
                         android:layout_width="65dp"
                         android:layout_height="32dp"
                         android:layout_marginStart="8dp"

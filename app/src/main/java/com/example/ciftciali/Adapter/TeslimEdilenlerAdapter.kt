@@ -27,6 +27,7 @@ import kotlinx.android.synthetic.main.item_teslim.view.tvKangal
 import kotlinx.android.synthetic.main.item_teslim.view.tvSucuk
 import kotlinx.android.synthetic.main.item_teslim.view.tvYumurta
 import kotlinx.android.synthetic.main.item_teslim.view.tvZaman
+import java.lang.Exception
 
 class TeslimEdilenlerAdapter(val myContext: Context, val siparisler: ArrayList<SiparisData>) : RecyclerView.Adapter<TeslimEdilenlerAdapter.SiparisHolder>() {
     val ref = FirebaseDatabase.getInstance().reference
@@ -79,6 +80,7 @@ class TeslimEdilenlerAdapter(val myContext: Context, val siparisler: ArrayList<S
         val sutCokelegi = itemView.tvCokelek
         val dil = itemView.tvDil
         val beyaz = itemView.tvBeyaz
+        val beyaz1000 = itemView.tvBeyaz1000
         val kasar400 = itemView.tv3lt
         val kasar600 = itemView.tv5lt
         val cokertme = itemView.tvCokertme
@@ -86,13 +88,17 @@ class TeslimEdilenlerAdapter(val myContext: Context, val siparisler: ArrayList<S
         val kangal = itemView.tvKangal
         val yumurta = itemView.tvYumurta
         val yogurt = itemView.tvYogurt
+        val yogurt3 = itemView.tvYogurt3
         val cigsut = itemView.tvCigsut
         val kavurma = itemView.tvKavurma
+        val kefir = itemView.tvKefir
+        val tvFiyat = itemView.tvFiyat
 
 
         val llCokelek = itemView.llCokelek
         val llDil = itemView.llDil
         val llBeyaz = itemView.llBeyaz
+        val llBeyaz1000 = itemView.llBeyaz1000
         val llCokertme = itemView.llCokertme
         val ll600 = itemView.ll600
         val ll400 = itemView.ll400
@@ -100,16 +106,46 @@ class TeslimEdilenlerAdapter(val myContext: Context, val siparisler: ArrayList<S
         val llKangal = itemView.llKangal
         val llYumurta = itemView.llYumurta
         val llYogurt = itemView.llYogurt
+        val llYogurt3 = itemView.llYogurt3
         val llCigsut = itemView.llCigsut
         val llKavurma = itemView.llKavurma
+        val llKefir = itemView.llKefir
 
         fun setData(siparisData: SiparisData) {
             musteriAdSoyad.text = siparisData.siparis_veren
             zaman.text = TimeAgo.getTimeAgo(siparisData.siparis_teslim_zamani.toString().toLong())
 
             bosKontrol(siparisData)
+            fiyatHesapla(siparisData)
 
+        }
 
+        private fun fiyatHesapla(siparisData: SiparisData): Double {
+            var fiyat = 0.0
+
+            try {
+                fiyat = (siparisData.sucuk.toString().toInt() * siparisData.sucuk_fiyat.toString().toDouble()) +
+                        (siparisData.sut_cokelegi.toString().toInt() * siparisData.sut_cokelegi_fiyat.toString().toDouble()) +
+                        (siparisData.yogurt.toString().toInt() * siparisData.yogurt_fiyat.toString().toDouble()) +
+                        (siparisData.yogurt3.toString().toInt() * siparisData.yogurt3_fiyat.toString().toDouble()) +
+                        (siparisData.yumurta.toString().toInt() * siparisData.yumurta_fiyat.toString().toDouble()) +
+                        (siparisData.yybeyaz_pey.toString().toInt() * siparisData.yybeyaz_pey_fiyat.toString().toDouble()) +
+                        (siparisData.yybeyaz_pey1000.toString().toInt() * siparisData.yybeyaz_pey1000_fiyat.toString().toDouble()) +
+                        (siparisData.yycig_sut.toString().toInt() * siparisData.yycig_sut_fiyat.toString().toDouble()) +
+                        (siparisData.yycokertme_pey.toString().toInt() * siparisData.yycokertme_pey_fiyat.toString().toDouble()) +
+                        (siparisData.yydil_pey.toString().toInt() * siparisData.yydil_pey_fiyat.toString().toDouble()) +
+                        (siparisData.yykangal_sucuk.toString().toInt() * siparisData.yykangal_sucuk_fiyat.toString().toDouble()) +
+                        (siparisData.yykasar_400.toString().toInt() * siparisData.yykasar_400_fiyat.toString().toDouble()) +
+                        (siparisData.yykasar_600.toString().toInt() * siparisData.yykasar_600_fiyat.toString().toDouble()) +
+                        (siparisData.yykavurma.toString().toInt() * siparisData.yykavurma_fiyat.toString().toDouble()) +
+                        (siparisData.yykefir.toString().toInt() * siparisData.yykefir_fiyat.toString().toDouble())
+
+                tvFiyat.text = "Fiyat:  $fiyat"
+            } catch (e: Exception) {
+                Log.e("Sipariş Para Hatasi", e.message.toString())
+            }
+
+            return fiyat
         }
 
         fun bosKontrol(siparisData: SiparisData) {
@@ -120,21 +156,25 @@ class TeslimEdilenlerAdapter(val myContext: Context, val siparisler: ArrayList<S
                 teslimEden.visibility = View.GONE
             }
 
-            UrunGizleme(siparisData.sut_cokelegi.toString(),sutCokelegi,llCokelek)
-            UrunGizleme(siparisData.yydil_pey.toString(),dil,llDil)
-            UrunGizleme(siparisData.yybeyaz_pey.toString(),beyaz,llBeyaz)
-            UrunGizleme(siparisData.yycokertme_pey.toString(),cokertme,llCokertme)
-            UrunGizleme(siparisData.yykasar_400.toString(),kasar400,ll400)
-            UrunGizleme(siparisData.yykasar_600.toString(),kasar600,ll600)
-            UrunGizleme(siparisData.sucuk.toString(),sucuk,llSucuk)
-            UrunGizleme(siparisData.yykangal_sucuk.toString(),kangal,llKangal)
-            UrunGizleme(siparisData.yumurta.toString(),yumurta,llYumurta)
-            UrunGizleme(siparisData.yogurt.toString(),yogurt,llYogurt)
-            UrunGizleme(siparisData.yykavurma.toString(),kavurma,llKavurma)
-            UrunGizleme(siparisData.yycig_sut.toString(),cigsut,llCigsut)
+            UrunGizleme(siparisData.sut_cokelegi.toString(), sutCokelegi, llCokelek)
+            UrunGizleme(siparisData.yydil_pey.toString(), dil, llDil)
+            UrunGizleme(siparisData.yybeyaz_pey.toString(), beyaz, llBeyaz)
+            UrunGizleme(siparisData.yybeyaz_pey1000.toString(), beyaz1000, llBeyaz1000)
+            UrunGizleme(siparisData.yycokertme_pey.toString(), cokertme, llCokertme)
+            UrunGizleme(siparisData.yykasar_400.toString(), kasar400, ll400)
+            UrunGizleme(siparisData.yykasar_600.toString(), kasar600, ll600)
+            UrunGizleme(siparisData.sucuk.toString(), sucuk, llSucuk)
+            UrunGizleme(siparisData.yykangal_sucuk.toString(), kangal, llKangal)
+            UrunGizleme(siparisData.yumurta.toString(), yumurta, llYumurta)
+            UrunGizleme(siparisData.yogurt.toString(), yogurt, llYogurt)
+            UrunGizleme(siparisData.yogurt3.toString(), yogurt3, llYogurt3)
+            UrunGizleme(siparisData.yykavurma.toString(), kavurma, llKavurma)
+            UrunGizleme(siparisData.yykefir.toString(), kefir, llKefir)
+            UrunGizleme(siparisData.yycig_sut.toString(), cigsut, llCigsut)
 
         }
     }
+
     fun UrunGizleme(gelenUrun: String, textView: TextView, linearLayout: LinearLayout) {
         if (gelenUrun != "0") {
             textView.text = gelenUrun

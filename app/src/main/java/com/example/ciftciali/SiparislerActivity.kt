@@ -1,4 +1,5 @@
 package com.example.ciftciali
+
 import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -97,12 +98,35 @@ class SiparislerActivity : AppCompatActivity() {
         ref.child("Siparisler").addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {}
             override fun onDataChange(p0: DataSnapshot) {
-
-
+                var sayi = 0
                 if (p0.hasChildren()) {
                     for (ds in p0.children) {
                         try {
                             var gelenData = ds.getValue(SiparisData::class.java)!!
+
+                            if (gelenData.sucuk_fiyat == null) {
+                                var refSiparisKey = ref.child("Siparisler").child(ds.key.toString())
+                                refSiparisKey.child("sucuk_fiyat").setValue(0)
+                                refSiparisKey.child("sut_cokelegi_fiyat").setValue(15)
+                                refSiparisKey.child("yogurt_fiyat").setValue(10)
+                                refSiparisKey.child("yogurt3").setValue("0") //-> Eklenecek
+                                refSiparisKey.child("yogurt3_fiyat").setValue(20) //-> Eklenecek
+                                refSiparisKey.child("yumurta_fiyat").setValue(2)
+                                refSiparisKey.child("yybeyaz_pey1000").setValue("0")
+                                refSiparisKey.child("yybeyaz_pey1000_fiyat").setValue(27.5)
+                                refSiparisKey.child("yybeyaz_pey_fiyat").setValue(15)
+                                refSiparisKey.child("yycig_sut_fiyat").setValue(15)
+                                refSiparisKey.child("yycokertme_pey_fiyat").setValue(40)
+                                refSiparisKey.child("yydil_pey_fiyat").setValue(30)
+                                refSiparisKey.child("yykangal_sucuk_fiyat").setValue(0)
+                                refSiparisKey.child("yykasar_400_fiyat").setValue(20)
+                                refSiparisKey.child("yykasar_600_fiyat").setValue(30)
+                                refSiparisKey.child("yykavurma_fiyat").setValue(0)
+                                refSiparisKey.child("yykefir_fiyat").setValue(0)
+                                refSiparisKey.child("yykefir").setValue("0")
+
+                                Log.e("teslim activity", " gelen fiyat bilgileri guncellenıyor")
+                            }
 
 
 
@@ -323,7 +347,6 @@ class SiparislerActivity : AppCompatActivity() {
                             } else if (gelenData.siparis_teslim_tarihi!!.compareTo(System.currentTimeMillis()) == 1) {
                                 ilerilist.add(gelenData)
                                 tvileriSayi.text = ilerilist.size.toString() + " Sipariş"
-
                                 recyclerViewileriTarihli()
                             }
 
@@ -801,7 +824,7 @@ class SiparislerActivity : AppCompatActivity() {
 
     fun recyclerView(recyclerView: RecyclerView, siparisListesi: ArrayList<SiparisData>) {
         recyclerView.layoutManager = LinearLayoutManager(this@SiparislerActivity, LinearLayoutManager.VERTICAL, false)
-        val Adapter = SiparisAdapter(this@SiparislerActivity, siparisListesi,kullaniciAdi.toString())
+        val Adapter = SiparisAdapter(this@SiparislerActivity, siparisListesi, kullaniciAdi.toString())
 
         recyclerView.adapter = Adapter
         recyclerView.setHasFixedSize(true)
@@ -810,7 +833,7 @@ class SiparislerActivity : AppCompatActivity() {
 
     fun recyclerViewileriTarihli() {
         rcileriTarih.layoutManager = LinearLayoutManager(this@SiparislerActivity, LinearLayoutManager.VERTICAL, false)
-        val Adapter = SiparisAdapter(this@SiparislerActivity, ilerilist,kullaniciAdi.toString())
+        val Adapter = SiparisAdapter(this@SiparislerActivity, ilerilist, kullaniciAdi.toString())
         rcileriTarih.adapter = Adapter
         rcileriTarih.setHasFixedSize(true)
     }

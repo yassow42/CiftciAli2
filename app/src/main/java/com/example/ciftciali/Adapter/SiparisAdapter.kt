@@ -9,6 +9,7 @@ import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,6 +25,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ServerValue
 import kotlinx.android.synthetic.main.dialog_siparis_ekle.view.*
 import kotlinx.android.synthetic.main.item_siparisler.view.*
+import java.lang.Exception
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -44,7 +46,7 @@ class SiparisAdapter(val myContext: Context, val siparisler: ArrayList<SiparisDa
     }
 
     override fun onBindViewHolder(holder: SiparisAdapter.SiparisHolder, position: Int) {
-
+        var item = siparisler[position]
         holder.setData(siparisler[position])
 
 
@@ -61,42 +63,14 @@ class SiparisAdapter(val myContext: Context, val siparisler: ArrayList<SiparisDa
                             .setPositiveButton("Onayla", object : DialogInterface.OnClickListener {
                                 override fun onClick(p0: DialogInterface?, p1: Int) {
 
-                                    var siparisData = SiparisData(
-                                        siparisler[position].siparis_zamani,
-                                        siparisler[position].siparis_teslim_zamani,
-                                        siparisler[position].siparis_teslim_tarihi,
-                                        siparisler[position].siparis_adres,
-                                        siparisler[position].siparis_apartman,
-                                        siparisler[position].siparis_tel,
-                                        siparisler[position].siparis_veren,
-                                        siparisler[position].siparis_mah,
-                                        siparisler[position].siparis_notu,
-                                        siparisler[position].siparis_key,
-                                        siparisler[position].yumurta,
-                                        siparisler[position].yykasar_400,
-                                        siparisler[position].yykasar_600,
-                                        siparisler[position].yogurt,
-                                        siparisler[position].sut_cokelegi,
-                                        siparisler[position].yycokertme_pey,
-                                        siparisler[position].yydil_pey,
-                                        siparisler[position].yybeyaz_pey,
-                                        siparisler[position].yycig_sut,
-                                        siparisler[position].yykangal_sucuk,
-                                        siparisler[position].sucuk,
-                                        siparisler[position].yykavurma,
-                                        siparisler[position].musteri_zkonum,
-                                        siparisler[position].musteri_zlat,
-                                        siparisler[position].musteri_zlong,
-                                        kullaniciAdi.toString()
-                                    )
 
                                     var key = siparisler[position].siparis_key.toString()
-                                    ref.child("Musteriler").child(siparisler[position].siparis_veren.toString()).child("siparisleri").child(key).setValue(siparisData)
+                                    ref.child("Musteriler").child(siparisler[position].siparis_veren.toString()).child("siparisleri").child(key).setValue(item)
 
-                                    ref.child("Teslim_siparisler").child(key).setValue(siparisData)
+                                    ref.child("Teslim_siparisler").child(key).setValue(item)
                                         .addOnCompleteListener {
 
-                                            myContext.startActivity(Intent(myContext,SiparislerActivity::class.java))
+                                            myContext.startActivity(Intent(myContext, SiparislerActivity::class.java))
                                             Toast.makeText(myContext, "Sipariş Teslim Edildi... Sayfayı Yenileyiniz..", Toast.LENGTH_LONG).show()
 
                                             ref.child("Siparisler").child(key).removeValue()
@@ -124,18 +98,21 @@ class SiparisAdapter(val myContext: Context, val siparisler: ArrayList<SiparisDa
                         builder.setTitle(siparisler[position].siparis_veren)
                         builder.setIcon(R.drawable.cow)
 
-                        viewDuzenle.et3lt.setText(siparisler[position].yykasar_400)
-                        viewDuzenle.et5lt.setText(siparisler[position].yykasar_600)
-                        viewDuzenle.etYumurta.setText(siparisler[position].yumurta)
-                        viewDuzenle.etSucuk.setText(siparisler[position].sucuk)
-                        viewDuzenle.etSutCokelegi.setText(siparisler[position].sut_cokelegi)
-                        viewDuzenle.etYogurt.setText(siparisler[position].yogurt)
-                        viewDuzenle.etBeyazPeynir.setText(siparisler[position].yybeyaz_pey)
-                        viewDuzenle.etCigsut.setText(siparisler[position].yycig_sut)
-                        viewDuzenle.etCokertmePeyniri.setText(siparisler[position].yycokertme_pey)
-                        viewDuzenle.etDilPeyniri.setText(siparisler[position].yydil_pey)
-                        viewDuzenle.etKangal.setText(siparisler[position].yykangal_sucuk)
-                        viewDuzenle.etKavurma.setText(siparisler[position].yykavurma)
+                        viewDuzenle.etCokertmePeyniri.setText(siparisler[position].yycokertme_pey);viewDuzenle.etCokertmePeyniriFiyat.setText(siparisler[position].yycokertme_pey_fiyat.toString())
+                        viewDuzenle.etDilPeyniri.setText(siparisler[position].yydil_pey);viewDuzenle.etDilPeyniriFiyat.setText(siparisler[position].yydil_pey_fiyat.toString());
+                        viewDuzenle.etBeyazPeynir.setText(siparisler[position].yybeyaz_pey);viewDuzenle.etBeyazPeynirFiyat.setText(siparisler[position].yybeyaz_pey_fiyat.toString())
+                        viewDuzenle.etBeyazPeynir1000.setText(siparisler[position].yybeyaz_pey1000);viewDuzenle.etBeyazPeynir1000Fiyat.setText(siparisler[position].yybeyaz_pey1000_fiyat.toString())
+                        viewDuzenle.et400Kasar.setText(siparisler[position].yykasar_400);viewDuzenle.et400KasarFiyat.setText(siparisler[position].yykasar_400_fiyat.toString())
+                        viewDuzenle.et600Kasar.setText(siparisler[position].yykasar_600);viewDuzenle.et600KasarFiyat.setText(siparisler[position].yykasar_600_fiyat.toString())
+                        viewDuzenle.etSutCokelegi.setText(siparisler[position].sut_cokelegi);viewDuzenle.etSutCokelegiFiyat.setText(siparisler[position].sut_cokelegi_fiyat.toString())
+                        viewDuzenle.etYumurta.setText(siparisler[position].yumurta);viewDuzenle.etYumurtaFiyat.setText(siparisler[position].yumurta_fiyat.toString())
+                        viewDuzenle.etYogurt.setText(siparisler[position].yogurt);viewDuzenle.etYogurtFiyat.setText(siparisler[position].yogurt_fiyat.toString())
+                        viewDuzenle.etYogurt3.setText(siparisler[position].yogurt3);viewDuzenle.etYogurt3Fiyat.setText(siparisler[position].yogurt3_fiyat.toString())
+                        viewDuzenle.etCigsut.setText(siparisler[position].yycig_sut);viewDuzenle.etCigsutFiyat.setText(siparisler[position].yycig_sut_fiyat.toString())
+                        viewDuzenle.etKefir.setText(siparisler[position].yykefir);viewDuzenle.etKefirFiyat.setText(siparisler[position].yykefir_fiyat.toString())
+                        viewDuzenle.etKangal.setText(siparisler[position].yykangal_sucuk);viewDuzenle.etKangalFiyat.setText(siparisler[position].yykangal_sucuk_fiyat.toString());
+                        viewDuzenle.etSucuk.setText(siparisler[position].sucuk);viewDuzenle.etSucukFiyat.setText(siparisler[position].sucuk_fiyat.toString())
+                        viewDuzenle.etKavurma.setText(siparisler[position].yykavurma);viewDuzenle.etKavurmaFiyat.setText(siparisler[position].yykavurma_fiyat.toString())
 
 
 
@@ -155,16 +132,13 @@ class SiparisAdapter(val myContext: Context, val siparisler: ArrayList<SiparisDa
                         }
 
                         val timeSetListener = TimePickerDialog.OnTimeSetListener { view, hourOfDay, minute ->
-                            cal.set(Calendar.HOUR_OF_DAY, hourOfDay)
-                            cal.set(Calendar.MINUTE, minute)
+                            cal.set(Calendar.HOUR_OF_DAY, hourOfDay); cal.set(Calendar.MINUTE, minute)
                         }
 
                         viewDuzenle.tvZamanEkleDialog.setOnClickListener {
                             DatePickerDialog(myContext, dateSetListener, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH)).show()
                             TimePickerDialog(myContext, timeSetListener, cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), true).show()
                         }
-
-
                         builder.setView(viewDuzenle)
 
 
@@ -172,96 +146,138 @@ class SiparisAdapter(val myContext: Context, val siparisler: ArrayList<SiparisDa
                             override fun onClick(dialog: DialogInterface?, which: Int) {
                                 dialog!!.dismiss()
                             }
-
                         })
+
                         builder.setPositiveButton("Güncelle", object : DialogInterface.OnClickListener {
                             override fun onClick(dialog: DialogInterface?, which: Int) {
 
-                                var sut3lt = "0"
-                                if (viewDuzenle.et3lt.text.isNotEmpty()) {
-                                    sut3lt = viewDuzenle.et3lt.text.toString()
-                                }
-                                var sut5lt = "0"
-                                if (viewDuzenle.et5lt.text.isNotEmpty()) {
-                                    sut5lt = viewDuzenle.et5lt.text.toString()
-                                }
+                                var kasar400 = "0"
+                                if (viewDuzenle.et400Kasar.text.toString().isNotEmpty()) kasar400 = viewDuzenle.et400Kasar.text.toString()
+                                var kasar400Fiyat = 0.0
+                                if (viewDuzenle.et400KasarFiyat.text.toString().isNotEmpty()) kasar400Fiyat = viewDuzenle.et400KasarFiyat.text.toString().toDouble()
+
+                                var kasar600 = "0"
+                                if (viewDuzenle.et600Kasar.text.toString().isNotEmpty()) kasar600 = viewDuzenle.et600Kasar.text.toString()
+
+                                var kasar600Fiyat = 0.0
+                                if (viewDuzenle.et600KasarFiyat.text.toString().isNotEmpty()) kasar600Fiyat = viewDuzenle.et600KasarFiyat.text.toString().toDouble()
+
                                 var yumurta = "0"
-                                if (viewDuzenle.etYumurta.text.isNotEmpty()) {
+                                if (viewDuzenle.etYumurta.text.toString().isNotEmpty()) {
                                     yumurta = viewDuzenle.etYumurta.text.toString()
                                 }
+                                var yumurta_fiyat = 0.0
+                                if (viewDuzenle.etYumurtaFiyat.text.toString().isNotEmpty()) {
+                                    yumurta_fiyat = viewDuzenle.etYumurtaFiyat.text.toString().toDouble()
+                                }
                                 var yogurt = "0"
-                                if (viewDuzenle.etYogurt.text.isNotEmpty()) {
+                                if (viewDuzenle.etYogurt.text.toString().isNotEmpty()) {
                                     yogurt = viewDuzenle.etYogurt.text.toString()
                                 }
-
+                                var yogurt_fiyat = 0.0
+                                if (viewDuzenle.etYogurtFiyat.text.toString().isNotEmpty()) {
+                                    yogurt_fiyat = viewDuzenle.etYogurtFiyat.text.toString().toDouble()
+                                }
+                                var yogurt3 = "0"
+                                if (viewDuzenle.etYogurt3.text.toString().isNotEmpty()) {
+                                    yogurt3 = viewDuzenle.etYogurt3.text.toString()
+                                }
+                                var yogurt3_fiyat = 0.0
+                                if (viewDuzenle.etYogurt3Fiyat.text.toString().isNotEmpty()) {
+                                    yogurt3_fiyat = viewDuzenle.etYogurt3Fiyat.text.toString().toDouble()
+                                }
                                 var sutCokelegi = "0"
                                 if (viewDuzenle.etSutCokelegi.text.toString().isNotEmpty()) {
                                     sutCokelegi = viewDuzenle.etSutCokelegi.text.toString()
+                                }
+                                var sutCokelegiFiyat = 0.0
+                                if (viewDuzenle.etSutCokelegiFiyat.text.toString().isNotEmpty()) {
+                                    sutCokelegiFiyat = viewDuzenle.etSutCokelegiFiyat.text.toString().toDouble()
                                 }
                                 var cokertmePey = "0"
                                 if (viewDuzenle.etCokertmePeyniri.text.toString().isNotEmpty()) {
                                     cokertmePey = viewDuzenle.etCokertmePeyniri.text.toString()
                                 }
+                                var cokertmePeyF = 0.0
+                                if (viewDuzenle.etCokertmePeyniriFiyat.text.toString().isNotEmpty()) {
+                                    cokertmePeyF = viewDuzenle.etCokertmePeyniriFiyat.text.toString().toDouble()
+                                }
                                 var dilPey = "0"
                                 if (viewDuzenle.etDilPeyniri.text.toString().isNotEmpty()) {
                                     dilPey = viewDuzenle.etDilPeyniri.text.toString()
+                                }
+                                var dilPeyF = 0.0
+                                if (viewDuzenle.etDilPeyniriFiyat.text.toString().isNotEmpty()) {
+                                    dilPeyF = viewDuzenle.etDilPeyniriFiyat.text.toString().toDouble()
                                 }
                                 var beyazPey = "0"
                                 if (viewDuzenle.etBeyazPeynir.text.toString().isNotEmpty()) {
                                     beyazPey = viewDuzenle.etBeyazPeynir.text.toString()
                                 }
+                                var beyazPeyF = 0.0
+                                if (viewDuzenle.etBeyazPeynirFiyat.text.toString().isNotEmpty()) {
+                                    beyazPeyF = viewDuzenle.etBeyazPeynirFiyat.text.toString().toDouble()
+                                }
+                                var beyazPey1000 = "0"
+                                if (viewDuzenle.etBeyazPeynir1000.text.toString().isNotEmpty()) {
+                                    beyazPey1000 = viewDuzenle.etBeyazPeynir1000.text.toString()
+                                }
+                                var beyazPey1000F = 0.0
+                                if (viewDuzenle.etBeyazPeynir1000Fiyat.text.toString().isNotEmpty()) {
+                                    beyazPey1000F = viewDuzenle.etBeyazPeynir1000Fiyat.text.toString().toDouble()
+                                }
                                 var cigSut = "0"
                                 if (viewDuzenle.etCigsut.text.toString().isNotEmpty()) {
                                     cigSut = viewDuzenle.etCigsut.text.toString()
+                                }
+                                var cigSutF = 0.0
+                                if (viewDuzenle.etCigsutFiyat.text.toString().isNotEmpty()) {
+                                    cigSutF = viewDuzenle.etCigsutFiyat.text.toString().toDouble()
                                 }
                                 var kangal = "0"
                                 if (viewDuzenle.etKangal.text.toString().isNotEmpty()) {
                                     kangal = viewDuzenle.etKangal.text.toString()
                                 }
+                                var kangalF = 0.0
+                                if (viewDuzenle.etKangalFiyat.text.toString().isNotEmpty()) {
+                                    kangalF = viewDuzenle.etKangalFiyat.text.toString().toDouble()
+                                }
                                 var sucuk = "0"
                                 if (viewDuzenle.etSucuk.text.toString().isNotEmpty()) {
                                     sucuk = viewDuzenle.etSucuk.text.toString()
+                                }
+                                var sucukF = 0.0
+                                if (viewDuzenle.etSucukFiyat.text.toString().isNotEmpty()) {
+                                    sucukF = viewDuzenle.etSucukFiyat.text.toString().toDouble()
                                 }
                                 var kavurma = "0"
                                 if (viewDuzenle.etKavurma.text.toString().isNotEmpty()) {
                                     kavurma = viewDuzenle.etKavurma.text.toString()
                                 }
+                                var kavurmaF = 0.0
+                                if (viewDuzenle.etKavurmaFiyat.text.toString().isNotEmpty()) {
+                                    kavurmaF = viewDuzenle.etKavurmaFiyat.text.toString().toDouble()
+                                }
+                                var kefir = "0"
+                                if (viewDuzenle.etKefir.text.toString().isNotEmpty()) {
+                                    kefir = viewDuzenle.etKefir.text.toString()
+                                }
+                                var kefirF = 0.0
+                                if (viewDuzenle.etKefirFiyat.text.toString().isNotEmpty()) {
+                                    kefirF = viewDuzenle.etKefirFiyat.text.toString().toDouble()
+                                }
 
 
-                                var ref = FirebaseDatabase.getInstance().reference
-                                var not = viewDuzenle.etSiparisNotu.text.toString()
-                                var siparisKey = siparisler[position].siparis_key.toString()
-                                var siparisVeren = siparisler[position].siparis_veren.toString()
+                                var siparisNotu = viewDuzenle.etSiparisNotu.text.toString()
+
                                 var siparisData = SiparisData(
-                                    siparisler[position].siparis_zamani,
-                                    siparisler[position].siparis_teslim_zamani,
-                                    cal.timeInMillis,
-                                    siparisler[position].siparis_adres,
-                                    siparisler[position].siparis_apartman,
-                                    siparisler[position].siparis_tel,
-                                    siparisler[position].siparis_veren,
-                                    siparisler[position].siparis_mah,
-                                    not,
-                                    siparisler[position].siparis_key,
-                                    yumurta,
-                                    sut3lt,
-                                    sut5lt,
-                                    yogurt,
-                                    sutCokelegi,
-                                    cokertmePey,
-                                    dilPey,
-                                    beyazPey,
-                                    cigSut,
-                                    kangal,
-                                    sucuk,
-                                    kavurma,
-                                    siparisler[position].musteri_zkonum,
-                                    siparisler[position].musteri_zlat,
-                                    siparisler[position].musteri_zlong,
-                                    kullaniciAdi.toString()
+                                    item.musteri_zkonum, item.siparis_adres, item.siparis_apartman, item.siparis_key, item.siparis_mah, siparisNotu, item.siparis_tel, cal.timeInMillis, System.currentTimeMillis(),
+                                    item.siparis_veren, System.currentTimeMillis(), kullaniciAdi.toString(), sucuk, sucukF, sutCokelegi, sutCokelegiFiyat, yogurt, yogurt_fiyat, yogurt3, yogurt3_fiyat,
+                                    yumurta, yumurta_fiyat, beyazPey, beyazPeyF, beyazPey1000, beyazPey1000F, cigSut, cigSutF, cokertmePey, cokertmePeyF, dilPey, dilPeyF,
+                                    kangal, kangalF, kasar400, kasar400Fiyat, kasar600, kasar600Fiyat, kavurma, kavurmaF, kefir, kefirF, item.musteri_zlat, item.musteri_zlong
                                 )
-                                ref.child("Siparisler").child(siparisKey).setValue(siparisData)
-                                ref.child("Musteriler").child(siparisVeren).child("siparisleri").setValue(siparisData)
+                                ref.child("Siparisler").child(item.siparis_key.toString()).setValue(siparisData)
+                                ref.child("Musteriler").child(item.siparis_veren!!).child("siparisleri").setValue(siparisData)
 
                                 var intent = Intent(myContext, SiparislerActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                                 myContext.startActivity(intent)
@@ -335,6 +351,8 @@ class SiparisAdapter(val myContext: Context, val siparisler: ArrayList<SiparisDa
         val tbYumurta = itemView.tbYumurta
         val tvYogurt = itemView.tvYogurt
         val tbYogurt = itemView.tbYogurt
+        val tvYogurt3 = itemView.tvYogurt3
+        val tbYogurt3 = itemView.tbYogurt3
         val tvCokertme = itemView.tvCokertme
         val tbCokertme = itemView.tbCokertme
         val tvCokelek = itemView.tvCokelek
@@ -342,7 +360,9 @@ class SiparisAdapter(val myContext: Context, val siparisler: ArrayList<SiparisDa
         val tvDil = itemView.tvDil
         val tbDil = itemView.tbDil
         val tvBeyaz = itemView.tvBeyazPeynir
+        val tvBeyaz1000 = itemView.tvBeyazPeynir1000
         val tbBeyaz = itemView.tbBeyazPeynir
+        val tbBeyaz1000 = itemView.tbBeyazPeynir1000
         val tvCig = itemView.tvCigsut
         val tbCig = itemView.tbCigsut
         val tvKangal = itemView.tvKangal
@@ -351,6 +371,8 @@ class SiparisAdapter(val myContext: Context, val siparisler: ArrayList<SiparisDa
         val tbSucuk = itemView.tbSucuk
         val tvKavurma = itemView.tvKavurma
         val tbKavurma = itemView.tbKavurma
+        val tvKefir = itemView.tvKefir
+        val tbKefir = itemView.tbKefir
 
 
         fun setData(siparisData: SiparisData) {
@@ -359,9 +381,40 @@ class SiparisAdapter(val myContext: Context, val siparisler: ArrayList<SiparisDa
             siparisVeren.text = siparisData.siparis_veren
             siparisAdres.text = siparisData.siparis_mah + " mahallesi " + siparisData.siparis_adres + " " + siparisData.siparis_apartman
             siparisTel.text = siparisData.siparis_tel
-            tvNot.text = siparisData.siparis_notu
+            var fiyat = fiyatHesapla(siparisData)
+
 
             siparisHataMesajlariVeBosKontrol(siparisData)
+
+        }
+
+
+        private fun fiyatHesapla(siparisData: SiparisData): Double {
+            var fiyat = 0.0
+
+            try {
+                fiyat = (siparisData.sucuk.toString().toInt() * siparisData.sucuk_fiyat.toString().toDouble()) +
+                        (siparisData.sut_cokelegi.toString().toInt() * siparisData.sut_cokelegi_fiyat.toString().toDouble()) +
+                        (siparisData.yogurt.toString().toInt() * siparisData.yogurt_fiyat.toString().toDouble()) +
+                        (siparisData.yogurt3.toString().toInt() * siparisData.yogurt3_fiyat.toString().toDouble()) +
+                        (siparisData.yumurta.toString().toInt() * siparisData.yumurta_fiyat.toString().toDouble()) +
+                        (siparisData.yybeyaz_pey.toString().toInt() * siparisData.yybeyaz_pey_fiyat.toString().toDouble()) +
+                        (siparisData.yybeyaz_pey1000.toString().toInt() * siparisData.yybeyaz_pey1000_fiyat.toString().toDouble()) +
+                        (siparisData.yycig_sut.toString().toInt() * siparisData.yycig_sut_fiyat.toString().toDouble()) +
+                        (siparisData.yycokertme_pey.toString().toInt() * siparisData.yycokertme_pey_fiyat.toString().toDouble()) +
+                        (siparisData.yydil_pey.toString().toInt() * siparisData.yydil_pey_fiyat.toString().toDouble()) +
+                        (siparisData.yykangal_sucuk.toString().toInt() * siparisData.yykangal_sucuk_fiyat.toString().toDouble()) +
+                        (siparisData.yykasar_400.toString().toInt() * siparisData.yykasar_400_fiyat.toString().toDouble()) +
+                        (siparisData.yykasar_600.toString().toInt() * siparisData.yykasar_600_fiyat.toString().toDouble()) +
+                        (siparisData.yykavurma.toString().toInt() * siparisData.yykavurma_fiyat.toString().toDouble()) +
+                        (siparisData.yykefir.toString().toInt() * siparisData.yykefir_fiyat.toString().toDouble())
+
+                tvNot.text = "Fiyat:  $fiyat\n Not: " + siparisData.siparis_notu
+            } catch (e: Exception) {
+                Log.e("Sipariş Para Hatasi", e.message.toString())
+            }
+
+            return fiyat
         }
 
         fun siparisHataMesajlariVeBosKontrol(siparisData: SiparisData) {
@@ -379,7 +432,6 @@ class SiparisAdapter(val myContext: Context, val siparisler: ArrayList<SiparisDa
                 hataMesajiYazdir("sipariş zamanı yok ${siparisData.siparis_key}", siparisData.siparis_veren.toString())
             }
             if (siparisData.siparis_teslim_tarihi != null) {
-
                 tvTeslimZaman.text = formatDate(siparisData.siparis_teslim_tarihi).toString()
             } else {
                 tvTeslimZaman.text = "yok"
@@ -387,83 +439,21 @@ class SiparisAdapter(val myContext: Context, val siparisler: ArrayList<SiparisDa
             }
 
 
-            if (!siparisData.yykasar_400.isNullOrEmpty()) {
-                tv400gr.text = siparisData.yykasar_400
-            } else {
-                hataMesajiYazdir("sut3 yok ${siparisData.siparis_key}", siparisData.siparis_veren.toString())
-            }
-
-            if (!siparisData.yykasar_600.isNullOrEmpty()) {
-                tv600gr.text = siparisData.yykasar_600
-            } else {
-                hataMesajiYazdir("sut5 yok ${siparisData.siparis_key}", siparisData.siparis_veren.toString())
-            }
-
-
-            if (!siparisData.yumurta.isNullOrEmpty()) {
-                tvYumurta.text = siparisData.yumurta
-
-            } else {
-                hataMesajiYazdir("yumurta yok ${siparisData.siparis_key}", siparisData.siparis_veren.toString())
-            }
-
-            if (!siparisData.yogurt.isNullOrEmpty()) {
-                tvYogurt.text = siparisData.yogurt
-
-            } else {
-                hataMesajiYazdir("yogurt yok ${siparisData.siparis_key}", siparisData.siparis_veren.toString())
-            }
-
-            if (!siparisData.sut_cokelegi.isNullOrEmpty()) {
-                tvCokelek.text = siparisData.sut_cokelegi
-
-            } else {
-                hataMesajiYazdir("Cokelek yok ${siparisData.siparis_key}", siparisData.siparis_veren.toString())
-            }
-
-            if (!siparisData.yycokertme_pey.isNullOrEmpty()) {
-                tvCokertme.text = siparisData.yycokertme_pey
-
-            } else {
-                hataMesajiYazdir("cokertme yok ${siparisData.siparis_key}", siparisData.siparis_veren.toString())
-            }
-            if (!siparisData.yydil_pey.isNullOrEmpty()) {
-                tvDil.text = siparisData.yydil_pey
-
-            } else {
-                hataMesajiYazdir("dil yok ${siparisData.siparis_key}", siparisData.siparis_veren.toString())
-            }
-            if (!siparisData.yybeyaz_pey.isNullOrEmpty()) {
-                tvBeyaz.text = siparisData.yybeyaz_pey
-
-            } else {
-                hataMesajiYazdir("beyaz yok ${siparisData.siparis_key}", siparisData.siparis_veren.toString())
-            }
-            if (!siparisData.yycig_sut.isNullOrEmpty()) {
-                tvCig.text = siparisData.yycig_sut
-
-            } else {
-                hataMesajiYazdir("cig sut yok ${siparisData.siparis_key}", siparisData.siparis_veren.toString())
-            }
-
-            if (!siparisData.yykangal_sucuk.isNullOrEmpty()) {
-                tvKangal.text = siparisData.yykangal_sucuk
-
-            } else {
-                hataMesajiYazdir("kangal yok ${siparisData.siparis_key}", siparisData.siparis_veren.toString())
-            }
-
-            if (!siparisData.sucuk.isNullOrEmpty()) {
-                tvSucuk.text = siparisData.sucuk
-
-            } else {
-                hataMesajiYazdir("sucuk yok ${siparisData.siparis_key}", siparisData.siparis_veren.toString())
-            }
-            if (!siparisData.yykavurma.isNullOrEmpty()) {
-                tvKavurma.text = siparisData.yykavurma
-            } else {
-                hataMesajiYazdir("kavurma yok ${siparisData.siparis_key}", siparisData.siparis_veren.toString())
-            }
+            tvSucuk.text = siparisData.sucuk+ " - " + siparisData.sucuk_fiyat
+            tvCokelek.text = siparisData.sut_cokelegi + " - " + siparisData.sut_cokelegi_fiyat
+            tvYogurt.text = siparisData.yogurt + " - " + siparisData.yogurt_fiyat
+            tvYogurt3.text = siparisData.yogurt3 + " - " + siparisData.yogurt3_fiyat
+            tvYumurta.text = siparisData.yumurta + " - " + siparisData.yumurta_fiyat
+            tvBeyaz.text = siparisData.yybeyaz_pey+ " - " + siparisData.yybeyaz_pey_fiyat
+            tvBeyaz1000.text = siparisData.yybeyaz_pey1000+ " - " + siparisData.yybeyaz_pey1000_fiyat
+            tvCig.text = siparisData.yycig_sut+ " - " + siparisData.yycig_sut_fiyat
+            tvCokertme.text = siparisData.yycokertme_pey+ " - " + siparisData.yycokertme_pey_fiyat
+            tvDil.text = siparisData.yydil_pey+ " - " + siparisData.yydil_pey_fiyat
+            tvKangal.text = siparisData.yykangal_sucuk + " - " + siparisData.yykangal_sucuk_fiyat
+            tv400gr.text = siparisData.yykasar_400 + " - " + siparisData.yykasar_400_fiyat
+            tv600gr.text = siparisData.yykasar_600+ " - " + siparisData.yykasar_600_fiyat
+            tvKavurma.text = siparisData.yykavurma + " - " + siparisData.yykavurma_fiyat
+            tvKefir.text = siparisData.yykefir + " - " + siparisData.yykefir_fiyat
 
 
         }
@@ -498,11 +488,17 @@ class SiparisAdapter(val myContext: Context, val siparisler: ArrayList<SiparisDa
             if (siparisData.yogurt == "0") {
                 tbYogurt.visibility = View.GONE
             }
+            if (siparisData.yogurt3 == "0") {
+                tbYogurt3.visibility = View.GONE
+            }
             if (siparisData.yumurta == "0") {
                 tbYumurta.visibility = View.GONE
             }
             if (siparisData.yybeyaz_pey == "0") {
                 tbBeyaz.visibility = View.GONE
+            }
+            if (siparisData.yybeyaz_pey1000.toString() == "0") {
+                tbBeyaz1000.visibility = View.GONE
             }
             if (siparisData.yycig_sut == "0") {
                 tbCig.visibility = View.GONE
@@ -518,6 +514,9 @@ class SiparisAdapter(val myContext: Context, val siparisler: ArrayList<SiparisDa
             }
             if (siparisData.yykavurma == "0") {
                 tbKavurma.visibility = View.GONE
+            }
+            if (siparisData.yykefir == "0") {
+                tbKefir.visibility = View.GONE
             }
 
 

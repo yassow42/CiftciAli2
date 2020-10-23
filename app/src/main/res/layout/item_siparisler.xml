@@ -171,13 +171,37 @@
                 android:id="@+id/tvBeyazPeynirYazi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Beyaz Peynir"
+                android:text="Beyaz Peynir 500"
                 android:textColor="@color/beyaz"
                 android:textSize="12sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tvBeyazPeynir"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="0"
+                android:textColor="@color/beyaz"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </TableRow>
+        <TableRow
+            android:id="@+id/tbBeyazPeynir1000"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvBeyazPeynirYazi1000"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Beyaz Peynir 1000"
+                android:textColor="@color/beyaz"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvBeyazPeynir1000"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
@@ -320,6 +344,30 @@
                 android:textSize="12sp"
                 android:textStyle="bold" />
         </TableRow>
+ <TableRow
+            android:id="@+id/tbYogurt3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvYogurtYazisi3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Yogurt3:"
+                android:textColor="@color/beyaz"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvYogurt3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="0"
+                android:textColor="@color/beyaz"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </TableRow>
 
         <TableRow
             android:id="@+id/tbCigsut"
@@ -414,6 +462,32 @@
 
             <TextView
                 android:id="@+id/tvKavurma"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="0"
+                android:textColor="@color/beyaz"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </TableRow>
+
+
+        <TableRow
+            android:id="@+id/tbKefir"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvKefirYazi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kefir: "
+                android:textColor="@color/beyaz"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvKefir"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"

@@ -50,6 +50,7 @@ class MusteriAdapter(val myContext: Context, val musteriler: ArrayList<MusteriDa
     }
 
     override fun onBindViewHolder(holder: MusteriHolder, position: Int) {
+        var item = musteriler[position]
         holder.setData(musteriler[position])
 
         holder.btnSiparisEkle.setOnClickListener {
@@ -130,81 +131,139 @@ class MusteriAdapter(val myContext: Context, val musteriler: ArrayList<MusteriDa
             builder.setPositiveButton("Sipariş Ekle", object : DialogInterface.OnClickListener {
                 override fun onClick(dialog: DialogInterface?, which: Int) {
 
-                    var sut3lt = "0"
-                    if (dialogViewSp.et3lt.text.toString().isNotEmpty()) {
-                        sut3lt = dialogViewSp.et3lt.text.toString()
-                    }
-                    var sut5lt = "0"
+                    var kasar400 = "0"
+                    if (dialogViewSp.et400Kasar.text.toString().isNotEmpty()) kasar400 = dialogViewSp.et400Kasar.text.toString()
+                    var kasar400Fiyat = 0.0
+                    if (dialogViewSp.et400KasarFiyat.text.toString().isNotEmpty()) kasar400Fiyat = dialogViewSp.et400KasarFiyat.text.toString().toDouble()
 
-                    if (dialogViewSp.et5lt.text.toString().isNotEmpty()) {
-                        sut5lt = dialogViewSp.et5lt.text.toString()
-                    }
+                    var kasar600 = "0"
+                    if (dialogViewSp.et600Kasar.text.toString().isNotEmpty()) kasar600 = dialogViewSp.et600Kasar.text.toString()
+
+                    var kasar600Fiyat =  0.0
+                    if (dialogViewSp.et600KasarFiyat.text.toString().isNotEmpty()) kasar600Fiyat = dialogViewSp.et600KasarFiyat.text.toString().toDouble()
+
                     var yumurta = "0"
                     if (dialogViewSp.etYumurta.text.toString().isNotEmpty()) {
                         yumurta = dialogViewSp.etYumurta.text.toString()
+                    }
+                    var yumurta_fiyat =  0.0
+                    if (dialogViewSp.etYumurtaFiyat.text.toString().isNotEmpty()) {
+                        yumurta_fiyat = dialogViewSp.etYumurtaFiyat.text.toString().toDouble()
                     }
                     var yogurt = "0"
                     if (dialogViewSp.etYogurt.text.toString().isNotEmpty()) {
                         yogurt = dialogViewSp.etYogurt.text.toString()
                     }
+                    var yogurt_fiyat =  0.0
+                    if (dialogViewSp.etYogurtFiyat.text.toString().isNotEmpty()) {
+                        yogurt_fiyat = dialogViewSp.etYogurtFiyat.text.toString().toDouble()
+                    }
+                    var yogurt3 = "0"
+                    if (dialogViewSp.etYogurt3.text.toString().isNotEmpty()) {
+                        yogurt3 = dialogViewSp.etYogurt3.text.toString()
+                    }
+                    var yogurt3_fiyat =  0.0
+                    if (dialogViewSp.etYogurt3Fiyat.text.toString().isNotEmpty()) {
+                        yogurt3_fiyat = dialogViewSp.etYogurt3Fiyat.text.toString().toDouble()
+                    }
                     var sutCokelegi = "0"
                     if (dialogViewSp.etSutCokelegi.text.toString().isNotEmpty()) {
                         sutCokelegi = dialogViewSp.etSutCokelegi.text.toString()
+                    }
+                    var sutCokelegiFiyat =  0.0
+                    if (dialogViewSp.etSutCokelegiFiyat.text.toString().isNotEmpty()) {
+                        sutCokelegiFiyat = dialogViewSp.etSutCokelegiFiyat.text.toString().toDouble()
                     }
                     var cokertmePey = "0"
                     if (dialogViewSp.etCokertmePeyniri.text.toString().isNotEmpty()) {
                         cokertmePey = dialogViewSp.etCokertmePeyniri.text.toString()
                     }
+                    var cokertmePeyF =  0.0
+                    if (dialogViewSp.etCokertmePeyniriFiyat.text.toString().isNotEmpty()) {
+                        cokertmePeyF = dialogViewSp.etCokertmePeyniriFiyat.text.toString().toDouble()
+                    }
                     var dilPey = "0"
                     if (dialogViewSp.etDilPeyniri.text.toString().isNotEmpty()) {
                         dilPey = dialogViewSp.etDilPeyniri.text.toString()
+                    }
+                    var dilPeyF =  0.0
+                    if (dialogViewSp.etDilPeyniriFiyat.text.toString().isNotEmpty()) {
+                        dilPeyF = dialogViewSp.etDilPeyniriFiyat.text.toString().toDouble()
                     }
                     var beyazPey = "0"
                     if (dialogViewSp.etBeyazPeynir.text.toString().isNotEmpty()) {
                         beyazPey = dialogViewSp.etBeyazPeynir.text.toString()
                     }
+                    var beyazPeyF =  0.0
+                    if (dialogViewSp.etBeyazPeynirFiyat.text.toString().isNotEmpty()) {
+                        beyazPeyF = dialogViewSp.etBeyazPeynirFiyat.text.toString().toDouble()
+                    }
+                    var beyazPey1000 = "0"
+                    if (dialogViewSp.etBeyazPeynir1000.text.toString().isNotEmpty()) {
+                        beyazPey1000 = dialogViewSp.etBeyazPeynir1000.text.toString()
+                    }
+                    var beyazPey1000F =  0.0
+                    if (dialogViewSp.etBeyazPeynir1000Fiyat.text.toString().isNotEmpty()) {
+                        beyazPey1000F = dialogViewSp.etBeyazPeynir1000Fiyat.text.toString().toDouble()
+                    }
                     var cigSut = "0"
                     if (dialogViewSp.etCigsut.text.toString().isNotEmpty()) {
                         cigSut = dialogViewSp.etCigsut.text.toString()
+                    }
+                    var cigSutF =  0.0
+                    if (dialogViewSp.etCigsutFiyat.text.toString().isNotEmpty()) {
+                        cigSutF = dialogViewSp.etCigsutFiyat.text.toString().toDouble()
                     }
                     var kangal = "0"
                     if (dialogViewSp.etKangal.text.toString().isNotEmpty()) {
                         kangal = dialogViewSp.etKangal.text.toString()
                     }
+                    var kangalF =  0.0
+                    if (dialogViewSp.etKangalFiyat.text.toString().isNotEmpty()) {
+                        kangalF = dialogViewSp.etKangalFiyat.text.toString().toDouble()
+                    }
                     var sucuk = "0"
                     if (dialogViewSp.etSucuk.text.toString().isNotEmpty()) {
                         sucuk = dialogViewSp.etSucuk.text.toString()
+                    }
+                    var sucukF =  0.0
+                    if (dialogViewSp.etSucukFiyat.text.toString().isNotEmpty()) {
+                        sucukF = dialogViewSp.etSucukFiyat.text.toString().toDouble()
                     }
                     var kavurma = "0"
                     if (dialogViewSp.etKavurma.text.toString().isNotEmpty()) {
                         kavurma = dialogViewSp.etKavurma.text.toString()
                     }
+                    var kavurmaF =  0.0
+                    if (dialogViewSp.etKavurmaFiyat.text.toString().isNotEmpty()) {
+                        kavurmaF = dialogViewSp.etKavurmaFiyat.text.toString().toDouble()
+                    }
+                    var kefir = "0"
+                    if (dialogViewSp.etKefir.text.toString().isNotEmpty()) {
+                        kefir = dialogViewSp.etKefir.text.toString()
+                    }
+                    var kefirF = 0.0
+                    if (dialogViewSp.etKefirFiyat.text.toString().isNotEmpty()) {
+                        kefirF = dialogViewSp.etKefirFiyat.text.toString().toDouble()
+                    }
 
 
                     var siparisNotu = dialogViewSp.etSiparisNotu.text.toString()
-
-                    var siparisKey = FirebaseDatabase.getInstance().reference.child("Siparisler").push().key.toString()
-
-
+                    var siparisKey = ref.child("Siparisler").push().key.toString()
                     var siparisData = SiparisData(
-                        null, null, cal.timeInMillis, musteriler[position].musteri_adres, musteriler[position].musteri_apartman,
-                        musteriler[position].musteri_tel, musteriler[position].musteri_ad_soyad, musteriler[position].musteri_mah, siparisNotu, siparisKey, yumurta, sut3lt, sut5lt,
-                        yogurt, sutCokelegi, cokertmePey, dilPey, beyazPey, cigSut, kangal, sucuk, kavurma, musteriler[position].musteri_zkonum, musteriler[position].musteri_zlat, musteriler[position].musteri_zlong,
-                        kullaniciAdi.toString()
+                        item.musteri_zkonum, item.musteri_adres, item.musteri_apartman, siparisKey, item.musteri_mah, siparisNotu, item.musteri_tel, cal.timeInMillis, System.currentTimeMillis(),
+                        item.musteri_ad_soyad, System.currentTimeMillis(), kullaniciAdi.toString(), sucuk, sucukF, sutCokelegi, sutCokelegiFiyat, yogurt, yogurt_fiyat, yogurt3, yogurt3_fiyat,
+                        yumurta, yumurta_fiyat, beyazPey, beyazPeyF, beyazPey1000, beyazPey1000F, cigSut, cigSutF, cokertmePey, cokertmePeyF, dilPey, dilPeyF,
+                        kangal, kangalF, kasar400, kasar400Fiyat, kasar600, kasar600Fiyat, kavurma, kavurmaF, kefir, kefirF, item.musteri_zlat, item.musteri_zlong
                     )
-                    FirebaseDatabase.getInstance().reference.child("Siparisler").child(siparisKey).setValue(siparisData)
-                    FirebaseDatabase.getInstance().reference.child("Siparisler").child(siparisKey).child("siparis_zamani").setValue(
-                        ServerValue.TIMESTAMP
-                    )
-                    FirebaseDatabase.getInstance().reference.child("Siparisler").child(siparisKey).child("siparis_teslim_zamani").setValue(
-                        ServerValue.TIMESTAMP
-                    )
-                    FirebaseDatabase.getInstance().reference.child("Musteriler").child(musteriler[position].musteri_ad_soyad.toString()).child("siparisleri").child(siparisKey).setValue(siparisData)
-                    FirebaseDatabase.getInstance().reference.child("Musteriler").child(musteriler[position].musteri_ad_soyad.toString()).child("siparisleri").child(siparisKey)
-                        .child("siparis_teslim_zamani").setValue(ServerValue.TIMESTAMP)
-                    FirebaseDatabase.getInstance().reference.child("Musteriler").child(musteriler[position].musteri_ad_soyad.toString()).child("siparisleri").child(siparisKey)
-                        .child("siparis_zamani").setValue(ServerValue.TIMESTAMP)
 
+
+                    ref.child("Siparisler").child(siparisKey).setValue(siparisData)
+                    ref.child("Siparisler").child(siparisKey).child("siparis_zamani").setValue(ServerValue.TIMESTAMP)
+                    ref.child("Siparisler").child(siparisKey).child("siparis_teslim_zamani").setValue(ServerValue.TIMESTAMP)
+                    ref.child("Musteriler").child(musteriler[position].musteri_ad_soyad.toString()).child("siparisleri").child(siparisKey).setValue(siparisData)
+                    ref.child("Musteriler").child(musteriler[position].musteri_ad_soyad.toString()).child("siparisleri").child(siparisKey).child("siparis_teslim_zamani").setValue(ServerValue.TIMESTAMP)
+                    ref.child("Musteriler").child(musteriler[position].musteri_ad_soyad.toString()).child("siparisleri").child(siparisKey).child("siparis_zamani").setValue(ServerValue.TIMESTAMP)
 
                 }
             })
@@ -299,89 +358,130 @@ class MusteriAdapter(val myContext: Context, val musteriler: ArrayList<MusteriDa
                         builder.setPositiveButton("Hızlı Sipariş Ekle", object : DialogInterface.OnClickListener {
                             override fun onClick(dialog: DialogInterface?, which: Int) {
 
-                                var sut3lt = "0"
-                                if (dialogViewSp.et3lt.text.toString().isNotEmpty()) {
-                                    sut3lt = dialogViewSp.et3lt.text.toString()
-                                }
-                                var sut5lt = "0"
+                                var kasar400 = "0"
+                                if (dialogViewSp.et400Kasar.text.toString().isNotEmpty()) kasar400 = dialogViewSp.et400Kasar.text.toString()
+                                var kasar400Fiyat = 0.0
+                                if (dialogViewSp.et400KasarFiyat.text.toString().isNotEmpty()) kasar400Fiyat = dialogViewSp.et400KasarFiyat.text.toString().toDouble()
 
-                                if (dialogViewSp.et5lt.text.toString().isNotEmpty()) {
-                                    sut5lt = dialogViewSp.et5lt.text.toString()
-                                }
+                                var kasar600 = "0"
+                                if (dialogViewSp.et600Kasar.text.toString().isNotEmpty()) kasar600 = dialogViewSp.et600Kasar.text.toString()
+
+                                var kasar600Fiyat =  0.0
+                                if (dialogViewSp.et600KasarFiyat.text.toString().isNotEmpty()) kasar600Fiyat = dialogViewSp.et600KasarFiyat.text.toString().toDouble()
+
                                 var yumurta = "0"
                                 if (dialogViewSp.etYumurta.text.toString().isNotEmpty()) {
                                     yumurta = dialogViewSp.etYumurta.text.toString()
+                                }
+                                var yumurta_fiyat =  0.0
+                                if (dialogViewSp.etYumurtaFiyat.text.toString().isNotEmpty()) {
+                                    yumurta_fiyat = dialogViewSp.etYumurtaFiyat.text.toString().toDouble()
                                 }
                                 var yogurt = "0"
                                 if (dialogViewSp.etYogurt.text.toString().isNotEmpty()) {
                                     yogurt = dialogViewSp.etYogurt.text.toString()
                                 }
+                                var yogurt_fiyat =  0.0
+                                if (dialogViewSp.etYogurtFiyat.text.toString().isNotEmpty()) {
+                                    yogurt_fiyat = dialogViewSp.etYogurtFiyat.text.toString().toDouble()
+                                }
+                                var yogurt3 = "0"
+                                if (dialogViewSp.etYogurt3.text.toString().isNotEmpty()) {
+                                    yogurt3 = dialogViewSp.etYogurt3.text.toString()
+                                }
+                                var yogurt3_fiyat =  0.0
+                                if (dialogViewSp.etYogurt3Fiyat.text.toString().isNotEmpty()) {
+                                    yogurt3_fiyat = dialogViewSp.etYogurt3Fiyat.text.toString().toDouble()
+                                }
                                 var sutCokelegi = "0"
                                 if (dialogViewSp.etSutCokelegi.text.toString().isNotEmpty()) {
                                     sutCokelegi = dialogViewSp.etSutCokelegi.text.toString()
+                                }
+                                var sutCokelegiFiyat =  0.0
+                                if (dialogViewSp.etSutCokelegiFiyat.text.toString().isNotEmpty()) {
+                                    sutCokelegiFiyat = dialogViewSp.etSutCokelegiFiyat.text.toString().toDouble()
                                 }
                                 var cokertmePey = "0"
                                 if (dialogViewSp.etCokertmePeyniri.text.toString().isNotEmpty()) {
                                     cokertmePey = dialogViewSp.etCokertmePeyniri.text.toString()
                                 }
+                                var cokertmePeyF =  0.0
+                                if (dialogViewSp.etCokertmePeyniriFiyat.text.toString().isNotEmpty()) {
+                                    cokertmePeyF = dialogViewSp.etCokertmePeyniriFiyat.text.toString().toDouble()
+                                }
                                 var dilPey = "0"
                                 if (dialogViewSp.etDilPeyniri.text.toString().isNotEmpty()) {
                                     dilPey = dialogViewSp.etDilPeyniri.text.toString()
+                                }
+                                var dilPeyF =  0.0
+                                if (dialogViewSp.etDilPeyniriFiyat.text.toString().isNotEmpty()) {
+                                    dilPeyF = dialogViewSp.etDilPeyniriFiyat.text.toString().toDouble()
                                 }
                                 var beyazPey = "0"
                                 if (dialogViewSp.etBeyazPeynir.text.toString().isNotEmpty()) {
                                     beyazPey = dialogViewSp.etBeyazPeynir.text.toString()
                                 }
+                                var beyazPeyF =  0.0
+                                if (dialogViewSp.etBeyazPeynirFiyat.text.toString().isNotEmpty()) {
+                                    beyazPeyF = dialogViewSp.etBeyazPeynirFiyat.text.toString().toDouble()
+                                }
+                                var beyazPey1000 = "0"
+                                if (dialogViewSp.etBeyazPeynir1000.text.toString().isNotEmpty()) {
+                                    beyazPey1000 = dialogViewSp.etBeyazPeynir1000.text.toString()
+                                }
+                                var beyazPey1000F =  0.0
+                                if (dialogViewSp.etBeyazPeynir1000Fiyat.text.toString().isNotEmpty()) {
+                                    beyazPey1000F = dialogViewSp.etBeyazPeynir1000Fiyat.text.toString().toDouble()
+                                }
                                 var cigSut = "0"
                                 if (dialogViewSp.etCigsut.text.toString().isNotEmpty()) {
                                     cigSut = dialogViewSp.etCigsut.text.toString()
+                                }
+                                var cigSutF =  0.0
+                                if (dialogViewSp.etCigsutFiyat.text.toString().isNotEmpty()) {
+                                    cigSutF = dialogViewSp.etCigsutFiyat.text.toString().toDouble()
                                 }
                                 var kangal = "0"
                                 if (dialogViewSp.etKangal.text.toString().isNotEmpty()) {
                                     kangal = dialogViewSp.etKangal.text.toString()
                                 }
+                                var kangalF =  0.0
+                                if (dialogViewSp.etKangalFiyat.text.toString().isNotEmpty()) {
+                                    kangalF = dialogViewSp.etKangalFiyat.text.toString().toDouble()
+                                }
                                 var sucuk = "0"
                                 if (dialogViewSp.etSucuk.text.toString().isNotEmpty()) {
                                     sucuk = dialogViewSp.etSucuk.text.toString()
+                                }
+                                var sucukF =  0.0
+                                if (dialogViewSp.etSucukFiyat.text.toString().isNotEmpty()) {
+                                    sucukF = dialogViewSp.etSucukFiyat.text.toString().toDouble()
                                 }
                                 var kavurma = "0"
                                 if (dialogViewSp.etKavurma.text.toString().isNotEmpty()) {
                                     kavurma = dialogViewSp.etKavurma.text.toString()
                                 }
+                                var kavurmaF =  0.0
+                                if (dialogViewSp.etKavurmaFiyat.text.toString().isNotEmpty()) {
+                                    kavurmaF = dialogViewSp.etKavurmaFiyat.text.toString().toDouble()
+                                }
+                                var kefir = "0"
+                                if (dialogViewSp.etKefir.text.toString().isNotEmpty()) {
+                                    kefir = dialogViewSp.etKefir.text.toString()
+                                }
+                                var kefirF = 0.0
+                                if (dialogViewSp.etKefirFiyat.text.toString().isNotEmpty()) {
+                                    kefirF = dialogViewSp.etKefirFiyat.text.toString().toDouble()
+                                }
 
 
                                 var siparisNotu = dialogViewSp.etSiparisNotu.text.toString()
-
-                                var siparisKey = FirebaseDatabase.getInstance().reference.child("Siparisler").push().key.toString()
-
-
+                                var siparisKey = ref.child("Siparisler").push().key.toString()
                                 var siparisData = SiparisData(
-                                    System.currentTimeMillis(),
-                                    System.currentTimeMillis(),
-                                    cal.timeInMillis,
-                                    musteriler[position].musteri_adres,
-                                    musteriler[position].musteri_apartman,
-                                    musteriler[position].musteri_tel,
-                                    musteriler[position].musteri_ad_soyad,
-                                    musteriler[position].musteri_mah,
-                                    siparisNotu,
-                                    siparisKey,
-                                    yumurta,
-                                    sut3lt,
-                                    sut5lt,
-                                    yogurt,
-                                    sutCokelegi,
-                                    cokertmePey,
-                                    dilPey,
-                                    beyazPey,
-                                    cigSut,
-                                    kangal,
-                                    sucuk,
-                                    kavurma,
-                                    musteriler[position].musteri_zkonum,
-                                    musteriler[position].musteri_zlat,
-                                    musteriler[position].musteri_zlong,
-                                    kullaniciAdi.toString()
+                                    item.musteri_zkonum, item.musteri_adres, item.musteri_apartman, siparisKey, item.musteri_mah, siparisNotu, item.musteri_tel, cal.timeInMillis, System.currentTimeMillis(),
+                                    item.musteri_ad_soyad, System.currentTimeMillis(), kullaniciAdi.toString(), sucuk, sucukF, sutCokelegi, sutCokelegiFiyat, yogurt, yogurt_fiyat, yogurt3, yogurt3_fiyat,
+                                    yumurta, yumurta_fiyat, beyazPey, beyazPeyF, beyazPey1000, beyazPey1000F, cigSut, cigSutF, cokertmePey, cokertmePeyF, dilPey, dilPeyF,
+                                    kangal, kangalF, kasar400, kasar400Fiyat, kasar600, kasar600Fiyat, kavurma, kavurmaF, kefir, kefirF, item.musteri_zlat, item.musteri_zlong
                                 )
                                 ref.child("Teslim_siparisler").child(siparisKey).setValue(siparisData)
                                 ref.child("Musteriler").child(musteriler[position].musteri_ad_soyad.toString()).child("siparisleri").child(siparisKey).setValue(siparisData)
@@ -473,102 +573,137 @@ class MusteriAdapter(val myContext: Context, val musteriler: ArrayList<MusteriDa
                         builder.setPositiveButton("Sipariş Ekle", object : DialogInterface.OnClickListener {
                             override fun onClick(dialog: DialogInterface?, which: Int) {
 
-                                var sut3lt = "0"
-                                if (dialogViewSp.et3lt.text.toString().isNotEmpty()) {
-                                    sut3lt = dialogViewSp.et3lt.text.toString()
-                                }
-                                var sut5lt = "0"
+                                var kasar400 = "0"
+                                if (dialogViewSp.et400Kasar.text.toString().isNotEmpty()) kasar400 = dialogViewSp.et400Kasar.text.toString()
+                                var kasar400Fiyat = 0.0
+                                if (dialogViewSp.et400KasarFiyat.text.toString().isNotEmpty()) kasar400Fiyat = dialogViewSp.et400KasarFiyat.text.toString().toDouble()
 
-                                if (dialogViewSp.et5lt.text.toString().isNotEmpty()) {
-                                    sut5lt = dialogViewSp.et5lt.text.toString()
-                                }
+                                var kasar600 = "0"
+                                if (dialogViewSp.et600Kasar.text.toString().isNotEmpty()) kasar600 = dialogViewSp.et600Kasar.text.toString()
+
+                                var kasar600Fiyat =  0.0
+                                if (dialogViewSp.et600KasarFiyat.text.toString().isNotEmpty()) kasar600Fiyat = dialogViewSp.et600KasarFiyat.text.toString().toDouble()
+
                                 var yumurta = "0"
                                 if (dialogViewSp.etYumurta.text.toString().isNotEmpty()) {
                                     yumurta = dialogViewSp.etYumurta.text.toString()
+                                }
+                                var yumurta_fiyat =  0.0
+                                if (dialogViewSp.etYumurtaFiyat.text.toString().isNotEmpty()) {
+                                    yumurta_fiyat = dialogViewSp.etYumurtaFiyat.text.toString().toDouble()
                                 }
                                 var yogurt = "0"
                                 if (dialogViewSp.etYogurt.text.toString().isNotEmpty()) {
                                     yogurt = dialogViewSp.etYogurt.text.toString()
                                 }
+                                var yogurt_fiyat =  0.0
+                                if (dialogViewSp.etYogurtFiyat.text.toString().isNotEmpty()) {
+                                    yogurt_fiyat = dialogViewSp.etYogurtFiyat.text.toString().toDouble()
+                                }
+                                var yogurt3 = "0"
+                                if (dialogViewSp.etYogurt3.text.toString().isNotEmpty()) {
+                                    yogurt3 = dialogViewSp.etYogurt3.text.toString()
+                                }
+                                var yogurt3_fiyat =  0.0
+                                if (dialogViewSp.etYogurt3Fiyat.text.toString().isNotEmpty()) {
+                                    yogurt3_fiyat = dialogViewSp.etYogurt3Fiyat.text.toString().toDouble()
+                                }
                                 var sutCokelegi = "0"
                                 if (dialogViewSp.etSutCokelegi.text.toString().isNotEmpty()) {
                                     sutCokelegi = dialogViewSp.etSutCokelegi.text.toString()
+                                }
+                                var sutCokelegiFiyat =  0.0
+                                if (dialogViewSp.etSutCokelegiFiyat.text.toString().isNotEmpty()) {
+                                    sutCokelegiFiyat = dialogViewSp.etSutCokelegiFiyat.text.toString().toDouble()
                                 }
                                 var cokertmePey = "0"
                                 if (dialogViewSp.etCokertmePeyniri.text.toString().isNotEmpty()) {
                                     cokertmePey = dialogViewSp.etCokertmePeyniri.text.toString()
                                 }
+                                var cokertmePeyF =  0.0
+                                if (dialogViewSp.etCokertmePeyniriFiyat.text.toString().isNotEmpty()) {
+                                    cokertmePeyF = dialogViewSp.etCokertmePeyniriFiyat.text.toString().toDouble()
+                                }
                                 var dilPey = "0"
                                 if (dialogViewSp.etDilPeyniri.text.toString().isNotEmpty()) {
                                     dilPey = dialogViewSp.etDilPeyniri.text.toString()
+                                }
+                                var dilPeyF =  0.0
+                                if (dialogViewSp.etDilPeyniriFiyat.text.toString().isNotEmpty()) {
+                                    dilPeyF = dialogViewSp.etDilPeyniriFiyat.text.toString().toDouble()
                                 }
                                 var beyazPey = "0"
                                 if (dialogViewSp.etBeyazPeynir.text.toString().isNotEmpty()) {
                                     beyazPey = dialogViewSp.etBeyazPeynir.text.toString()
                                 }
+                                var beyazPeyF =  0.0
+                                if (dialogViewSp.etBeyazPeynirFiyat.text.toString().isNotEmpty()) {
+                                    beyazPeyF = dialogViewSp.etBeyazPeynirFiyat.text.toString().toDouble()
+                                }
+                                var beyazPey1000 = "0"
+                                if (dialogViewSp.etBeyazPeynir1000.text.toString().isNotEmpty()) {
+                                    beyazPey1000 = dialogViewSp.etBeyazPeynir1000.text.toString()
+                                }
+                                var beyazPey1000F =  0.0
+                                if (dialogViewSp.etBeyazPeynir1000Fiyat.text.toString().isNotEmpty()) {
+                                    beyazPey1000F = dialogViewSp.etBeyazPeynir1000Fiyat.text.toString().toDouble()
+                                }
                                 var cigSut = "0"
                                 if (dialogViewSp.etCigsut.text.toString().isNotEmpty()) {
                                     cigSut = dialogViewSp.etCigsut.text.toString()
+                                }
+                                var cigSutF =  0.0
+                                if (dialogViewSp.etCigsutFiyat.text.toString().isNotEmpty()) {
+                                    cigSutF = dialogViewSp.etCigsutFiyat.text.toString().toDouble()
                                 }
                                 var kangal = "0"
                                 if (dialogViewSp.etKangal.text.toString().isNotEmpty()) {
                                     kangal = dialogViewSp.etKangal.text.toString()
                                 }
+                                var kangalF =  0.0
+                                if (dialogViewSp.etKangalFiyat.text.toString().isNotEmpty()) {
+                                    kangalF = dialogViewSp.etKangalFiyat.text.toString().toDouble()
+                                }
                                 var sucuk = "0"
                                 if (dialogViewSp.etSucuk.text.toString().isNotEmpty()) {
                                     sucuk = dialogViewSp.etSucuk.text.toString()
+                                }
+                                var sucukF =  0.0
+                                if (dialogViewSp.etSucukFiyat.text.toString().isNotEmpty()) {
+                                    sucukF = dialogViewSp.etSucukFiyat.text.toString().toDouble()
                                 }
                                 var kavurma = "0"
                                 if (dialogViewSp.etKavurma.text.toString().isNotEmpty()) {
                                     kavurma = dialogViewSp.etKavurma.text.toString()
                                 }
+                                var kavurmaF =  0.0
+                                if (dialogViewSp.etKavurmaFiyat.text.toString().isNotEmpty()) {
+                                    kavurmaF = dialogViewSp.etKavurmaFiyat.text.toString().toDouble()
+                                }
+                                var kefir = "0"
+                                if (dialogViewSp.etKefir.text.toString().isNotEmpty()) {
+                                    kefir = dialogViewSp.etKefir.text.toString()
+                                }
+                                var kefirF = 0.0
+                                if (dialogViewSp.etKefirFiyat.text.toString().isNotEmpty()) {
+                                    kefirF = dialogViewSp.etKefirFiyat.text.toString().toDouble()
+                                }
 
 
                                 var siparisNotu = dialogViewSp.etSiparisNotu.text.toString()
-
-                                var siparisKey = FirebaseDatabase.getInstance().reference.child("Siparisler").push().key.toString()
-
-
+                                var siparisKey = ref.child("Siparisler").push().key.toString()
                                 var siparisData = SiparisData(
-                                    null,
-                                    null,
-                                    cal.timeInMillis,
-                                    musteriler[position].musteri_adres,
-                                    musteriler[position].musteri_apartman,
-                                    musteriler[position].musteri_tel,
-                                    musteriler[position].musteri_ad_soyad,
-                                    musteriler[position].musteri_mah,
-                                    siparisNotu,
-                                    siparisKey,
-                                    yumurta,
-                                    sut3lt,
-                                    sut5lt,
-                                    yogurt,
-                                    sutCokelegi,
-                                    cokertmePey,
-                                    dilPey,
-                                    beyazPey,
-                                    cigSut,
-                                    kangal,
-                                    sucuk,
-                                    kavurma,
-                                    musteriler[position].musteri_zkonum,
-                                    musteriler[position].musteri_zlat,
-                                    musteriler[position].musteri_zlong,
-                                    kullaniciAdi.toString()
+                                    item.musteri_zkonum, item.musteri_adres, item.musteri_apartman, siparisKey, item.musteri_mah, siparisNotu, item.musteri_tel, cal.timeInMillis, System.currentTimeMillis(),
+                                    item.musteri_ad_soyad, System.currentTimeMillis(), kullaniciAdi.toString(), sucuk, sucukF, sutCokelegi, sutCokelegiFiyat, yogurt, yogurt_fiyat, yogurt3, yogurt3_fiyat,
+                                    yumurta, yumurta_fiyat, beyazPey, beyazPeyF, beyazPey1000, beyazPey1000F, cigSut, cigSutF, cokertmePey, cokertmePeyF, dilPey, dilPeyF,
+                                    kangal, kangalF, kasar400, kasar400Fiyat, kasar600, kasar600Fiyat, kavurma, kavurmaF, kefir, kefirF, item.musteri_zlat, item.musteri_zlong
                                 )
-                                FirebaseDatabase.getInstance().reference.child("Siparisler").child(siparisKey).setValue(siparisData)
-                                FirebaseDatabase.getInstance().reference.child("Siparisler").child(siparisKey).child("siparis_zamani").setValue(
-                                    ServerValue.TIMESTAMP
-                                )
-                                FirebaseDatabase.getInstance().reference.child("Siparisler").child(siparisKey).child("siparis_teslim_zamani").setValue(
-                                    ServerValue.TIMESTAMP
-                                )
-                                FirebaseDatabase.getInstance().reference.child("Musteriler").child(musteriler[position].musteri_ad_soyad.toString()).child("siparisleri").child(siparisKey).setValue(siparisData)
-                                FirebaseDatabase.getInstance().reference.child("Musteriler").child(musteriler[position].musteri_ad_soyad.toString()).child("siparisleri").child(siparisKey)
-                                    .child("siparis_teslim_zamani").setValue(ServerValue.TIMESTAMP)
-                                FirebaseDatabase.getInstance().reference.child("Musteriler").child(musteriler[position].musteri_ad_soyad.toString()).child("siparisleri").child(siparisKey)
-                                    .child("siparis_zamani").setValue(ServerValue.TIMESTAMP)
+                                ref.child("Siparisler").child(siparisKey).setValue(siparisData)
+                                ref.child("Siparisler").child(siparisKey).child("siparis_zamani").setValue(ServerValue.TIMESTAMP)
+                                ref.child("Siparisler").child(siparisKey).child("siparis_teslim_zamani").setValue(ServerValue.TIMESTAMP)
+                                ref.child("Musteriler").child(musteriler[position].musteri_ad_soyad.toString()).child("siparisleri").child(siparisKey).setValue(siparisData)
+                                ref.child("Musteriler").child(musteriler[position].musteri_ad_soyad.toString()).child("siparisleri").child(siparisKey).child("siparis_teslim_zamani").setValue(ServerValue.TIMESTAMP)
+                                ref.child("Musteriler").child(musteriler[position].musteri_ad_soyad.toString()).child("siparisleri").child(siparisKey).child("siparis_zamani").setValue(ServerValue.TIMESTAMP)
 
 
                             }
@@ -595,18 +730,7 @@ class MusteriAdapter(val myContext: Context, val musteriler: ArrayList<MusteriDa
                             val intent = Intent(myContext, AdresBulmaMapsActivity::class.java)
                             intent.putExtra("musteriAdi", musteriAdi)
                             myContext.startActivity(intent)
-                            /*
-                            if (dialogView.swKonumKaydet.isChecked) {
-                                FirebaseDatabase.getInstance().reference.child("Musteriler").child(musteriAdi).child("musteri_zkonum").setValue(true)
-                                holder.getLocation(musteriAdi)
-                            } else {
-                                holder.locationManager.removeUpdates(holder.myLocationListener)
-                                FirebaseDatabase.getInstance().reference.child("Musteriler").child(musteriAdi).child("musteri_zkonum").setValue(false)
-                                FirebaseDatabase.getInstance().reference.child("Musteriler").child(musteriAdi).child("musteri_zlat").removeValue()
-                                FirebaseDatabase.getInstance().reference.child("Musteriler").child(musteriAdi).child("musteri_zlong").removeValue()
-                            }
 
-                            */
                         }
 
                         dialogView.imgCheck.setOnClickListener {
@@ -637,8 +761,7 @@ class MusteriAdapter(val myContext: Context, val musteriler: ArrayList<MusteriDa
                         dialogView.tvAdSoyad.text = musteriler[position].musteri_ad_soyad.toString()
                         dialogView.tvMahalle.text = musteriler[position].musteri_mah.toString() + " Mahallesi"
                         dialogView.etApartman.setText(musteriler[position].musteri_apartman.toString())
-                        FirebaseDatabase.getInstance().reference.child("Musteriler").child(musteriAdi).addListenerForSingleValueEvent(object :
-                            ValueEventListener {
+                        ref.child("Musteriler").child(musteriAdi).addListenerForSingleValueEvent(object : ValueEventListener {
                             override fun onCancelled(p0: DatabaseError) {}
                             override fun onDataChange(p0: DataSnapshot) {
                                 var adres = p0.child("musteri_adres").value.toString()
@@ -728,7 +851,6 @@ class MusteriAdapter(val myContext: Context, val musteriler: ArrayList<MusteriDa
                 LocationManager.NETWORK_PROVIDER
             )
         }
-
 
         val myLocationListener = object : LocationListener {
             override fun onLocationChanged(location: Location?) {

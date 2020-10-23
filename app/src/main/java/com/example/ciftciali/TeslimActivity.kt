@@ -137,7 +137,7 @@ class TeslimActivity : AppCompatActivity() {
                 }
 
 
-                ref.child("Teslim_siparisler").orderByChild("siparis_teslim_zamani").addValueEventListener(object : ValueEventListener {
+                ref.child("Teslim_siparisler").orderByChild("siparis_teslim_zamani").addListenerForSingleValueEvent(object : ValueEventListener {
                     override fun onCancelled(p0: DatabaseError) {
                     }
 
@@ -149,6 +149,34 @@ class TeslimActivity : AppCompatActivity() {
                             for (ds in data.children) {
                                 var gelenData = ds.getValue(SiparisData::class.java)!!
                                 butunTeslimList.add(gelenData)
+
+
+                                if (gelenData.sucuk_fiyat == null) {
+                                    var refSiparisKey = ref.child("Teslim_siparisler").child(gelenData.siparis_key.toString())
+                                    refSiparisKey.child("sucuk_fiyat").setValue(0)
+                                    refSiparisKey.child("sut_cokelegi_fiyat").setValue(15)
+                                    refSiparisKey.child("yogurt_fiyat").setValue(10)
+                                    refSiparisKey.child("yogurt3").setValue("0") //-> Eklenecek
+                                    refSiparisKey.child("yogurt3_fiyat").setValue(20) //-> Eklenecek
+                                    refSiparisKey.child("yumurta_fiyat").setValue(2)
+                                    refSiparisKey.child("yybeyaz_pey1000").setValue("0")
+                                    refSiparisKey.child("yybeyaz_pey1000_fiyat").setValue(27.5)
+                                    refSiparisKey.child("yybeyaz_pey_fiyat").setValue(15)
+                                    refSiparisKey.child("yycig_sut_fiyat").setValue(15)
+                                    refSiparisKey.child("yycokertme_pey_fiyat").setValue(40)
+                                    refSiparisKey.child("yydil_pey_fiyat").setValue(30)
+                                    refSiparisKey.child("yykangal_sucuk_fiyat").setValue(0)
+                                    refSiparisKey.child("yykasar_400_fiyat").setValue(20)
+                                    refSiparisKey.child("yykasar_600_fiyat").setValue(30)
+                                    refSiparisKey.child("yykavurma_fiyat").setValue(0)
+                                    refSiparisKey.child("yykefir_fiyat").setValue(0)
+                                    refSiparisKey.child("yykefir").setValue("0")
+                                    Log.e("teslim activity", " gelen fiyat bilgileri guncellenıyor")
+                                }
+
+
+
+
 
                                 if (gece3GelenZaman - 86400000 < gelenData.siparis_teslim_zamani!!.toLong() && gelenData.siparis_teslim_zamani!!.toLong() < gece3GelenZaman) {
                                     suankiTeslimList.add(gelenData)
@@ -173,22 +201,19 @@ class TeslimActivity : AppCompatActivity() {
     }
 
 
+    private fun setupRecyclerView() {
+        rcTeslimEdilenler.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        TeslimAdapter = TeslimEdilenlerAdapter(this, suankiTeslimList)
+        rcTeslimEdilenler.adapter = TeslimAdapter
+        rcTeslimEdilenler.setHasFixedSize(true)
+    }
 
+    fun setupNavigationView() {
 
-
-private fun setupRecyclerView() {
-    rcTeslimEdilenler.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-    TeslimAdapter = TeslimEdilenlerAdapter(this, suankiTeslimList)
-    rcTeslimEdilenler.adapter = TeslimAdapter
-    rcTeslimEdilenler.setHasFixedSize(true)
-}
-
-fun setupNavigationView() {
-
-    BottomNavigationViewHelper.setupBottomNavigationView(bottomNav)
-    BottomNavigationViewHelper.setupNavigation(this, bottomNav) // Bottomnavhelper içinde setupNavigationda context ve nav istiyordu verdik...
-    var menu = bottomNav.menu
-    var menuItem = menu.getItem(ACTIVITY_NO)
-    menuItem.setChecked(true)
-}
+        BottomNavigationViewHelper.setupBottomNavigationView(bottomNav)
+        BottomNavigationViewHelper.setupNavigation(this, bottomNav) // Bottomnavhelper içinde setupNavigationda context ve nav istiyordu verdik...
+        var menu = bottomNav.menu
+        var menuItem = menu.getItem(ACTIVITY_NO)
+        menuItem.setChecked(true)
+    }
 }
